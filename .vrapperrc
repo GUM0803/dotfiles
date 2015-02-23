@@ -1,0 +1,34 @@
+nnoremap <esc> :noh<Enter>
+
+nnoremap gl gt
+nnoremap gh gT
+
+" set gvimpath=F:/kunita/Software/vim/gvim.exe
+
+" タブ・インデント
+set noexpandtab " タブをスペースに変換しない
+set tabstop=4 " タブをスペース何個で表示するか
+set shiftwidth=4 " >>などで挿入される量
+set softtabstop=0 " タブを押した時の挿入量 0の場合tabstopの値になる。
+" set autoindent
+
+" IME
+set imd
+
+set clipboard=unnamedplus
+
+" インクリメンタルサーチ
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" 行のハイライト
+set cursorline
+
+" 行を常に中央に
+set scrolloff=999
+
+" タブ、空白、改行の可視化
+set list
+" set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
