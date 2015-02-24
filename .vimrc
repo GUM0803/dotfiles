@@ -30,6 +30,7 @@ nnoremap <silent> [vimfiler]c :VimFilerCurrentDir -force-quit -status -edit-acti
 nmap <Space>q <Plug>(quickrun)
 
 nmap s <Plug>(easymotion-s2)
+vmap s <Plug>(easymotion-s2)
 
 " エンコード
 " set encoding=UTF-8
@@ -39,7 +40,7 @@ set fileencodings=utf-8,euc-jp,cp932
 " scriptencoding utf-8
 
 " フォント
-set guifont=Consolas:h11:cANSI
+" set guifont=Consolas:h11:cANSI
 " set guifontwide=MS_Gothic:b
 " set ambiwidth=double
 " set antialias
@@ -66,7 +67,7 @@ set clipboard=unnamedplus,unnamed
 set nobackup
 
 " スワップファイル
-set swapfile
+set noswapfile
 set directory=~/.vim/tmp
 
 " アンドゥファイル
@@ -184,7 +185,7 @@ NeoBundle 'tpope/vim-fugitive'
 " WatchDogs
 let g:watchdogs_check_BufWritePost_enable = 1
 NeoBundle 'osyo-manga/vim-watchdogs'
-call watchdogs#setup(g:quickrun_config)
+" call watchdogs#setup(g:quickrun_config)
 
 " Shabadou
 NeoBundle 'osyo-manga/shabadou.vim'
