@@ -40,7 +40,7 @@ set fileencodings=utf-8,euc-jp,cp932
 " scriptencoding utf-8
 
 " フォント
-" set guifont=Consolas:h11:cANSI
+set guifont=Consolas:h11:cANSI
 " set guifontwide=MS_Gothic:b
 " set ambiwidth=double
 " set antialias
@@ -77,8 +77,8 @@ set noundofile
 " set shell=bash.bat
 
 " 行数・列数
-set lines=60
-set columns=110
+" set lines=60
+" set columns=110
 
 " マウス
 set mouse=h
@@ -192,6 +192,22 @@ NeoBundle 'osyo-manga/shabadou.vim'
 
 " Hier
 NeoBundle 'cohama/vim-hier'
+
+" Quick Fix Status
+NeoBundle 'dannyob/quickfixstatus'
+
+" Emmet (html css helper)
+NeoBundle 'mattn/emmet-vim'
+
+" Light Line
+" NeoBundle 'itchyny/lightline.vim'
+" let g:lightline = {
+" \	'colorscheme': 'wombat'
+" \}
+
+" Quick Fix Signs
+let g:qfsigns#AutoJump = 1
+NeoBundle 'KazuakiM/vim-qfsigns'
 
 call neobundle#end()
  
