@@ -8,10 +8,8 @@ nnoremap <C-Left> <C-PageUp>
 
 nnoremap <esc> :noh<Enter>
 
-nnoremap [tab] <Nop>
-nmap     t [tab]
-nnoremap <silent> [tab]l gt
-nnoremap <silent> [tab]h gT
+nnoremap <silent> gl gt
+nnoremap <silent> gh gT
 
 nnoremap [unite] <Nop>
 nmap     <Space>u [unite]
@@ -27,7 +25,7 @@ nmap     <Space>f [vimfiler]
 nnoremap <silent> [vimfiler]b :VimFilerBufferDir -force-quit -status -edit-action=tabswitch<enter>
 nnoremap <silent> [vimfiler]c :VimFilerCurrentDir -force-quit -status -edit-action=tabswitch<enter>
 
-nmap <Space>q <Plug>(quickrun)
+nmap <Space>r <Plug>(quickrun)
 
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
@@ -40,7 +38,7 @@ set fileencodings=utf-8,euc-jp,cp932
 " scriptencoding utf-8
 
 " フォント
-set guifont=Consolas:h11:cANSI
+" set guifont=Consolas:h11:cANSI
 " set guifontwide=MS_Gothic:b
 " set ambiwidth=double
 " set antialias
@@ -50,6 +48,9 @@ colorscheme desert
 
 " ファイル形式に応じて色づけ
 syntax on
+
+" 起動時のモード
+set iminsert=0
 
 " 検索
 set ignorecase
@@ -200,14 +201,23 @@ NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'mattn/emmet-vim'
 
 " Light Line
-" NeoBundle 'itchyny/lightline.vim'
-" let g:lightline = {
-" \	'colorscheme': 'wombat'
-" \}
+NeoBundle 'itchyny/lightline.vim'
+let g:lightline = {
+\	'colorscheme': 'wombat'
+\}
 
 " Quick Fix Signs
-let g:qfsigns#AutoJump = 1
-NeoBundle 'KazuakiM/vim-qfsigns'
+" let g:qfsigns#AutoJump = 1
+" NeoBundle 'KazuakiM/vim-qfsigns'
+
+" Web API
+" NeoBundle 'mattn/webapi-vim'
+
+" Excite 翻訳
+" NeoBundle 'mattn/excitetranslate-vim'
+
+" Multiple Cursor
+NeoBundle 'terryma/vim-multiple-cursors'
 
 call neobundle#end()
  
