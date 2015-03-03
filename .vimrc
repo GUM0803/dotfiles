@@ -1,3 +1,5 @@
+let mapleader = " "
+
 nnoremap <Up> <C-w>k
 nnoremap <Right> <C-w>l
 nnoremap <Down> <C-w>j
@@ -12,7 +14,7 @@ nnoremap <silent> gl gt
 nnoremap <silent> gh gT
 
 nnoremap [unite] <Nop>
-nmap     <Space>u [unite]
+nmap     <Leader>u [unite]
 nnoremap <silent> [unite]b :Unite -resume -tab -auto-preview buffer<Enter>
 nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
 nnoremap <silent> [unite]g :Unite -resume -tab -auto-preview grep<Enter>
@@ -21,14 +23,17 @@ nnoremap <silent> [unite]y :Unite -resume history/yank<Enter>
 nnoremap <silent> [unite]B :Unite -resume bookmark<Enter>
 
 nnoremap [vimfiler] <Nop>
-nmap     <Space>f [vimfiler]
+nmap     <Leader>f [vimfiler]
 nnoremap <silent> [vimfiler]b :VimFilerBufferDir -force-quit -status -edit-action=tabswitch<enter>
 nnoremap <silent> [vimfiler]c :VimFilerCurrentDir -force-quit -status -edit-action=tabswitch<enter>
 
-nmap <Space>r <Plug>(quickrun)
+nmap <Leader>r <Plug>(quickrun)
 
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
+
+nmap <Leader>c <Plug>(caw:i:toggle)
+vmap <Leader>c <Plug>(caw:i:toggle)
 
 " エンコード
 " set encoding=UTF-8
@@ -38,8 +43,7 @@ set fileencodings=utf-8,euc-jp,cp932
 " scriptencoding utf-8
 
 " フォント
-" set guifont=Consolas:h11:cANSI
-" set guifontwide=MS_Gothic:b
+set guifont=Consolas:h11:cANSI
 " set ambiwidth=double
 " set antialias
 
@@ -178,6 +182,8 @@ NeoBundle 'Shougo/junkfile.vim'
 let g:EasyMotion_do_mapping = 0 " デフォルトのマッピングを削除
 let g:EasyMotion_smartcase = 1 " 大文字小文字の違いを無視
 let g:EasyMotion_use_smartsign_jp = 1 " キー位置の同じ文字は一致とみなす
+let g:EasyMotion_use_upper = 1 " labelの文字を大文字にする
+let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 NeoBundle 'Lokaltog/vim-easymotion'
 
 " Fugitive
@@ -219,6 +225,9 @@ let g:lightline = {
 " Multiple Cursor
 NeoBundle 'terryma/vim-multiple-cursors'
 
+" Caw
+NeoBundle "tyru/caw.vim.git"
+
 call neobundle#end()
  
 " Required:
@@ -253,10 +262,10 @@ function! GuiTabLabel()
 	let l:label .= l:bufname == '' ? 'No title' : l:bufname
 
 	" タブ内にウィンドウが複数あるときにはその数を追加します(デフォルトで一応あるので)
-	let l:wincount = tabpagewinnr(v:lnum, '$')
-	if l:wincount > 1
-		let l:label .= '[' . l:wincount . ']'
-	endif
+	" let l:wincount = tabpagewinnr(v:lnum, '$')
+	" if l:wincount > 1
+	" 	let l:label .= '[' . l:wincount . ']'
+	" endif
 
 	" このタブページに変更のあるバッファがるときには '[+]' を追加します(デフォルトで一応あるので)
 	for bufnr in l:bufnrlist
