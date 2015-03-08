@@ -1,5 +1,7 @@
 let mapleader = " "
 
+au BufRead,BufNewFile *.scss set filetype=sass
+
 nnoremap <Up> <C-w>k
 nnoremap <Right> <C-w>l
 nnoremap <Down> <C-w>j
@@ -31,9 +33,20 @@ nmap <Leader>r <Plug>(quickrun)
 
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
+nmap w <Plug>(easymotion-bd-wl)
+vmap w <Plug>(easymotion-bd-wl)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+vmap <Leader>j <Plug>(easymotion-j)
+vmap <Leader>k <Plug>(easymotion-k)
 
 nmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Leader>c <Plug>(caw:i:toggle)
+
+vmap <Enter> <Plug>(EasyAlign)
+
+" Google 翻訳
+set keywordprg=trans\ :ja
 
 " エンコード
 " set encoding=UTF-8
@@ -156,7 +169,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimshell'
 
 " Unite
-let g:unite_split_rule = 'botright' " 分割方向
+let g:unite_split_rule                 = 'botright' " 分割方向
 let g:unite_source_history_yank_enable = 1 " yank履歴の有効化
 NeoBundle 'Shougo/unite.vim'
 
@@ -179,12 +192,15 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/junkfile.vim'
 
 " EasyMotion
-let g:EasyMotion_do_mapping = 0 " デフォルトのマッピングを削除
-let g:EasyMotion_smartcase = 1 " 大文字小文字の違いを無視
+let g:EasyMotion_do_mapping       = 0 " デフォルトのマッピングを削除
+let g:EasyMotion_smartcase        = 1 " 大文字小文字の違いを無視
 let g:EasyMotion_use_smartsign_jp = 1 " キー位置の同じ文字は一致とみなす
-let g:EasyMotion_use_upper = 1 " labelの文字を大文字にする
-let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
+let g:EasyMotion_use_upper        = 1 " labelの文字を大文字にする
+let g:EasyMotion_keys             = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 NeoBundle 'Lokaltog/vim-easymotion'
+
+" Easy Align
+NeoBundle 'junegunn/vim-easy-align'
 
 " Fugitive
 NeoBundle 'tpope/vim-fugitive'
@@ -216,17 +232,20 @@ let g:lightline = {
 " let g:qfsigns#AutoJump = 1
 " NeoBundle 'KazuakiM/vim-qfsigns'
 
-" Web API
-" NeoBundle 'mattn/webapi-vim'
-
-" Excite 翻訳
-" NeoBundle 'mattn/excitetranslate-vim'
-
 " Multiple Cursor
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " Caw
 NeoBundle "tyru/caw.vim.git"
+
+" Coffee Script
+NeoBundle "kchmck/vim-coffee-script"
+
+" Sass Syntax
+" NeoBundle "cakebaker/scss-syntax.vim"
+
+" Sass Compile
+" NeoBundle "AtsushiM/sass-compile.vim"
 
 call neobundle#end()
  
@@ -239,8 +258,8 @@ NeoBundleCheck
 "-------------------------
 
 function! LN()
-	let name = expand('%:t')
-	let line_no = line('.')
+	let name     = expand('%:t')
+	let line_no  = line('.')
 	let line_str = getline(line_no)
 	redir @*>
 	echo printf("%s:%d %s", name, line_no, line_str)
