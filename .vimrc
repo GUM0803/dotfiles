@@ -107,8 +107,9 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 " 行番号を表示
 set number
 
-" 行のハイライト
+" 行・列のハイライト
 set cursorline
+set cursorcolumn
 
 " 行を常に中央に
 set scrolloff=999
@@ -246,6 +247,16 @@ NeoBundle "kchmck/vim-coffee-script"
 
 " Sass Compile
 " NeoBundle "AtsushiM/sass-compile.vim"
+
+NeoBundleLazy 'marijnh/tern_for_vim'
+NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
+if neobundle#tap('tern_for_vim')
+    if executable('npm')
+        call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
+        call neobundle#config({'autoload': {'filetypes': ['javascript', 'coffee']}})
+    endif
+    call neobundle#untap()
+endif
 
 call neobundle#end()
  
