@@ -45,6 +45,9 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 
 vmap <Enter> <Plug>(EasyAlign)
 
+" 現在日時を入力
+nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
+
 " Google 翻訳
 set keywordprg=trans\ :ja
 
@@ -248,15 +251,15 @@ NeoBundle "kchmck/vim-coffee-script"
 " Sass Compile
 " NeoBundle "AtsushiM/sass-compile.vim"
 
-NeoBundleLazy 'marijnh/tern_for_vim'
-NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
-if neobundle#tap('tern_for_vim')
-    if executable('npm')
-        call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
-        call neobundle#config({'autoload': {'filetypes': ['javascript', 'coffee']}})
-    endif
-    call neobundle#untap()
-endif
+" NeoBundleLazy 'marijnh/tern_for_vim'
+" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
+" if neobundle#tap('tern_for_vim')
+"     if executable('npm')
+"         call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
+"         call neobundle#config({'autoload': {'filetypes': ['javascript', 'coffee']}})
+"     endif
+"     call neobundle#untap()
+" endif
 
 call neobundle#end()
  
