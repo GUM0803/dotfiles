@@ -102,7 +102,8 @@ set noundofile
 set mouse=h
 
 " ステータスの表示
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set laststatus=2
+" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
 " 行番号を表示
 set number
@@ -239,6 +240,9 @@ NeoBundle 'terryma/vim-multiple-cursors'
 " Caw
 NeoBundle "tyru/caw.vim.git"
 
+" Tag Bar
+NeoBundle "majutsushi/tagbar"
+
 " Coffee Script
 NeoBundle "kchmck/vim-coffee-script"
 
@@ -248,15 +252,15 @@ NeoBundle "kchmck/vim-coffee-script"
 " Sass Compile
 " NeoBundle "AtsushiM/sass-compile.vim"
 
-NeoBundleLazy 'marijnh/tern_for_vim'
-NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
-if neobundle#tap('tern_for_vim')
-    if executable('npm')
-        call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
-        call neobundle#config({'autoload': {'filetypes': ['javascript', 'coffee']}})
-    endif
-    call neobundle#untap()
-endif
+" NeoBundleLazy 'marijnh/tern_for_vim'
+" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_scurce': 'tern_for_vim'}}
+" if neobundle#tap('tern_for_vim')
+"     if executable('npm')
+"         call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
+"         call neobundle#config({'autoload': {'filetypes': ['javascript', 'coffee']}})
+"     endif
+"     call neobundle#untap()
+" endif
 
 call neobundle#end()
  
