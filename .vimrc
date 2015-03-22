@@ -17,17 +17,12 @@ nnoremap <silent> gh gT
 
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
-nnoremap <silent> [unite]b :Unite -resume -tab -auto-preview buffer<Enter>
+nnoremap <silent> [unite]b :Unite buffer<Enter>
 nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
-nnoremap <silent> [unite]g :Unite -resume -tab -auto-preview grep<Enter>
-nnoremap <silent> [unite]m :Unite -resume -tab -auto-preview mark<Enter>
-nnoremap <silent> [unite]y :Unite -resume history/yank<Enter>
-nnoremap <silent> [unite]B :Unite -resume bookmark<Enter>
-
-nnoremap [vimfiler] <Nop>
-nmap     <Leader>f [vimfiler]
-nnoremap <silent> [vimfiler]b :VimFilerBufferDir -force-quit -status -edit-action=tabswitch<enter>
-nnoremap <silent> [vimfiler]c :VimFilerCurrentDir -force-quit -status -edit-action=tabswitch<enter>
+nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<Enter>
+nnoremap <silent> [unite]m :Unite mark<Enter>
+nnoremap <silent> [unite]y :Unite history/yank<Enter>
+nnoremap <silent> [unite]B :Unite bookmark<Enter>
 
 nmap <Leader>r <Plug>(quickrun)
 
@@ -256,7 +251,7 @@ NeoBundle "kchmck/vim-coffee-script"
 " NeoBundle "AtsushiM/sass-compile.vim"
 
 " NeoBundleLazy 'marijnh/tern_for_vim'
-" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_scurce': 'tern_for_vim'}}
+" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
 " if neobundle#tap('tern_for_vim')
 "     if executable('npm')
 "         call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
