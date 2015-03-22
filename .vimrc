@@ -18,13 +18,15 @@ nnoremap <silent> gh gT
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
 nnoremap <silent> [unite]b :Unite buffer<Enter>
-nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
-nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<Enter>
 nnoremap <silent> [unite]m :Unite mark<Enter>
 nnoremap <silent> [unite]y :Unite history/yank<Enter>
 nnoremap <silent> [unite]B :Unite bookmark<Enter>
+nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
+nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<Enter>
 
 nmap <Leader>r <Plug>(quickrun)
+
+nmap <Leader>o :TagbarToggle<Enter>
 
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
@@ -240,6 +242,11 @@ NeoBundle "tyru/caw.vim.git"
 
 " Tag Bar
 NeoBundle "majutsushi/tagbar"
+
+" Auto Ctags
+" let g:auto_ctags = 1
+" let g:auto_ctags_directory_list = ['.git', '.svn']
+" NeoBundle 'soramugi/auto-ctags.vim'
 
 " Coffee Script
 NeoBundle "kchmck/vim-coffee-script"
