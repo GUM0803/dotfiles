@@ -43,7 +43,7 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Enter> <Plug>(EasyAlign)
 
 " 現在日時を入力
-nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
+" nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
 
 " Google 翻訳
 set keywordprg=trans\ :ja
@@ -65,9 +65,6 @@ colorscheme desert
 
 " ファイル形式に応じて色づけ
 syntax on
-
-" 起動時のモード
-set iminsert=0
 
 " 検索
 set ignorecase
@@ -139,6 +136,22 @@ set noautochdir
 set guioptions-=T
 set guioptions-=m
 set guioptions-=r
+
+set iminsert=1
+set imsearch=0
+" set imcmdline
+set imactivatefunc=ImActivate
+function! ImActivate(active)
+  if a:active
+    call system('fcitx-remote -o')
+  else
+    call system('fcitx-remote -c')
+  endif
+endfunction
+set imstatusfunc=ImStatus
+function! ImStatus()
+  return system('fcitx-remote')[0] is# '2'
+endfunction
 
 "---------------------------
 " Start Neobundle Settings.
@@ -316,6 +329,15 @@ function! GuiTabLabel()
 
 	" 表示文字列を返します
 	return l:label
+endfunction
+
+" Ime切り替え
+function! ImActivate(active)
+  if a:active
+    call system('fcitx-remote -o')
+  else
+    call system('fcitx-remote -c')
+  endif
 endfunction
 
 " guitablabel に上の関数を設定します
