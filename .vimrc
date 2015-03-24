@@ -133,6 +133,11 @@ set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
 " カレントディレクトリの自動切換え
 set noautochdir
 
+" タブページを常に表示
+set showtabline=2
+" gVimでもテキストベースのタブページを使う
+set guioptions-=e
+
 " GUIオプション
 set guioptions-=T
 set guioptions-=m
