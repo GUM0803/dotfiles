@@ -18,13 +18,15 @@ nnoremap <silent> gh gT
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
 nnoremap <silent> [unite]b :Unite buffer<Enter>
-nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
-nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<Enter>
 nnoremap <silent> [unite]m :Unite mark<Enter>
 nnoremap <silent> [unite]y :Unite history/yank<Enter>
 nnoremap <silent> [unite]B :Unite bookmark<Enter>
+nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
+nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<Enter>
 
 nmap <Leader>r <Plug>(quickrun)
+
+nmap <Leader>o :TagbarToggle<Enter>
 
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
@@ -41,7 +43,7 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Enter> <Plug>(EasyAlign)
 
 " 現在日時を入力
-nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
+" nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
 
 " Google 翻訳
 set keywordprg=trans\ :ja
@@ -63,9 +65,6 @@ colorscheme desert
 
 " ファイル形式に応じて色づけ
 syntax on
-
-" 起動時のモード
-set iminsert=0
 
 " 検索
 set ignorecase
@@ -142,6 +141,22 @@ set guioptions-=e
 set guioptions-=T
 set guioptions-=m
 set guioptions-=r
+
+set iminsert=1
+set imsearch=0
+" set imcmdline
+set imactivatefunc=ImActivate
+function! ImActivate(active)
+  if a:active
+    call system('fcitx-remote -o')
+  else
+    call system('fcitx-remote -c')
+  endif
+endfunction
+set imstatusfunc=ImStatus
+function! ImStatus()
+  return system('fcitx-remote')[0] is# '2'
+endfunction
 
 "---------------------------
 " Start Neobundle Settings.
@@ -246,6 +261,11 @@ NeoBundle "tyru/caw.vim.git"
 " Tag Bar
 NeoBundle "majutsushi/tagbar"
 
+" Auto Ctags
+" let g:auto_ctags = 1
+" let g:auto_ctags_directory_list = ['.git', '.svn']
+" NeoBundle 'soramugi/auto-ctags.vim'
+
 " Coffee Script
 NeoBundle "kchmck/vim-coffee-script"
 
@@ -314,6 +334,15 @@ function! GuiTabLabel()
 
 	" 表示文字列を返します
 	return l:label
+endfunction
+
+" Ime切り替え
+function! ImActivate(active)
+  if a:active
+    call system('fcitx-remote -o')
+  else
+    call system('fcitx-remote -c')
+  endif
 endfunction
 
 " guitablabel に上の関数を設定します
