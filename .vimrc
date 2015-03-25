@@ -264,6 +264,9 @@ NeoBundle "majutsushi/tagbar"
 " Coffee Script
 NeoBundle "kchmck/vim-coffee-script"
 
+" Jade Syntax
+NeoBundle "digitaltoad/vim-jade"
+
 " Sass Syntax
 " NeoBundle "cakebaker/scss-syntax.vim"
 
