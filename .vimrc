@@ -42,6 +42,15 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 
 vmap <Enter> <Plug>(EasyAlign)
 
+nmap <Leader>m <Plug>(quickhl-manual-this)
+xmap <Leader>m <Plug>(quickhl-manual-this)
+nmap <Leader>M <Plug>(quickhl-manual-reset)
+xmap <Leader>M <Plug>(quickhl-manual-reset)
+
+nmap <Leader>j <Plug>(quickhl-cword-toggle)
+nmap <Leader>] <Plug>(quickhl-tag-toggle)
+map H <Plug>(operator-quickhl-manual-this-motion)
+
 " 現在日時を入力
 " nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
 
@@ -287,6 +296,9 @@ NeoBundle "digitaltoad/vim-jade"
 "     endif
 "     call neobundle#untap()
 " endif
+
+" Quick Highlight
+NeoBundle "t9md/vim-quickhl"
 
 call neobundle#end()
  
