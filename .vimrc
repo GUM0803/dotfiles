@@ -51,6 +51,10 @@ nmap <Leader>j <Plug>(quickhl-cword-toggle)
 nmap <Leader>] <Plug>(quickhl-tag-toggle)
 map H <Plug>(operator-quickhl-manual-this-motion)
 
+nmap ys <Plug>(operator-surround-append)
+nmap ds <Plug>(operator-surround-delete)
+nmap cs <Plug>(operator-surround-replace)
+
 " 現在日時を入力
 " nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
 
@@ -299,6 +303,13 @@ NeoBundle "digitaltoad/vim-jade"
 
 " Quick Highlight
 NeoBundle "t9md/vim-quickhl"
+
+" Operator Surround
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'rhysd/vim-operator-surround'
+
+" Substitude Preview
+NeoBundle 'osyo-manga/vim-over'
 
 call neobundle#end()
  
