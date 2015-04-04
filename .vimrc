@@ -47,9 +47,9 @@ xmap <Leader>m <Plug>(quickhl-manual-this)
 nmap <Leader>M <Plug>(quickhl-manual-reset)
 xmap <Leader>M <Plug>(quickhl-manual-reset)
 
-nmap <Leader>j <Plug>(quickhl-cword-toggle)
+nmap <Leader>h <Plug>(quickhl-cword-toggle)
 nmap <Leader>] <Plug>(quickhl-tag-toggle)
-map H <Plug>(operator-quickhl-manual-this-motion)
+" map H <Plug>(operator-quickhl-manual-this-motion)
 
 nmap ys <Plug>(operator-surround-append)
 nmap ds <Plug>(operator-surround-delete)
@@ -84,6 +84,8 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+
+set nrformats=hex
 
 " ファイルパスの区切り文字
 " set noshellslash
@@ -155,22 +157,6 @@ set guioptions-=T
 set guioptions-=m
 set guioptions-=r
 
-set iminsert=1
-set imsearch=0
-" set imcmdline
-set imactivatefunc=ImActivate
-function! ImActivate(active)
-  if a:active
-    call system('fcitx-remote -o')
-  else
-    call system('fcitx-remote -c')
-  endif
-endfunction
-set imstatusfunc=ImStatus
-function! ImStatus()
-  return system('fcitx-remote')[0] is# '2'
-endfunction
-
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
@@ -220,6 +206,9 @@ NeoBundle 'Shougo/vimfiler.vim'
 " NeoBundle 'Shougo/neocomplete.vim'
 " let g:neocomplcache_enable_at_startup = 1 " 自動起動
 " let g:neocomplcache_enable_underbar_completion = 1 " アンダーバー区切りを補完
+
+" Fcitx
+NeoBundle 'vim-scripts/fcitx.vim'
 
 " Junk File
 NeoBundle 'Shougo/junkfile.vim'
@@ -360,15 +349,6 @@ function! GuiTabLabel()
 
 	" 表示文字列を返します
 	return l:label
-endfunction
-
-" Ime切り替え
-function! ImActivate(active)
-  if a:active
-    call system('fcitx-remote -o')
-  else
-    call system('fcitx-remote -c')
-  endif
 endfunction
 
 " guitablabel に上の関数を設定します
