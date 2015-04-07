@@ -1,7 +1,5 @@
 let mapleader = " "
 
-au BufRead,BufNewFile *.scss set filetype=sass
-
 nnoremap <Up> <C-w>k
 nnoremap <Right> <C-w>l
 nnoremap <Down> <C-w>j
@@ -10,28 +8,26 @@ nnoremap <Left> <C-w>h
 nnoremap <C-Right> <C-PageDown>
 nnoremap <C-Left> <C-PageUp>
 
-nnoremap <esc> :noh<Enter>
+nnoremap <esc> :noh<cr>
 
 nnoremap <silent> gl gt
 nnoremap <silent> gh gT
 
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
-nnoremap <silent> [unite]b :Unite buffer<Enter>
-nnoremap <silent> [unite]m :Unite mark<Enter>
-nnoremap <silent> [unite]y :Unite history/yank<Enter>
-nnoremap <silent> [unite]B :Unite bookmark<Enter>
-nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<Enter>
-nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<Enter>
+nnoremap <silent> [unite]b :Unite buffer<cr>
+nnoremap <silent> [unite]m :Unite mark<cr>
+nnoremap <silent> [unite]y :Unite history/yank<cr>
+nnoremap <silent> [unite]B :Unite bookmark<cr>
+nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<cr>
+nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<cr>
 
 nmap <Leader>r <Plug>(quickrun)
 
-nmap <Leader>o :TagbarToggle<Enter>
+nmap <Leader>o :TagbarToggle<cr>
 
 nmap s <Plug>(easymotion-s2)
 vmap s <Plug>(easymotion-s2)
-" nmap w <Plug>(easymotion-bd-wl)
-" vmap w <Plug>(easymotion-bd-wl)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 vmap <Leader>j <Plug>(easymotion-j)
@@ -40,7 +36,7 @@ vmap <Leader>k <Plug>(easymotion-k)
 nmap <Leader>c <Plug>(caw:i:toggle)
 vmap <Leader>c <Plug>(caw:i:toggle)
 
-vmap <Enter> <Plug>(EasyAlign)
+vmap <cr> <Plug>(EasyAlign)
 
 nmap <Leader>m <Plug>(quickhl-manual-this)
 xmap <Leader>m <Plug>(quickhl-manual-this)
@@ -49,11 +45,15 @@ xmap <Leader>M <Plug>(quickhl-manual-reset)
 
 nmap <Leader>h <Plug>(quickhl-cword-toggle)
 nmap <Leader>] <Plug>(quickhl-tag-toggle)
-" map H <Plug>(operator-quickhl-manual-this-motion)
 
 nmap ys <Plug>(operator-surround-append)
 nmap ds <Plug>(operator-surround-delete)
 nmap cs <Plug>(operator-surround-replace)
+
+if executable('fcitx-remote')
+  inoremap <esc> <esc>:CloseFcitx<cr>
+  command! CloseFcitx :call system("fcitx-remote -c")
+endif
 
 " 現在日時を入力
 " nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
@@ -206,9 +206,6 @@ NeoBundle 'Shougo/vimfiler.vim'
 " NeoBundle 'Shougo/neocomplete.vim'
 " let g:neocomplcache_enable_at_startup = 1 " 自動起動
 " let g:neocomplcache_enable_underbar_completion = 1 " アンダーバー区切りを補完
-
-" Fcitx
-NeoBundle 'vim-scripts/fcitx.vim'
 
 " Junk File
 NeoBundle 'Shougo/junkfile.vim'
