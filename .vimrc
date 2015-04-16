@@ -50,6 +50,8 @@ nmap ys <Plug>(operator-surround-append)
 nmap ds <Plug>(operator-surround-delete)
 nmap cs <Plug>(operator-surround-replace)
 
+map * <Plug>(asterisk-z*)
+
 if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
   command! CloseFcitx :call system("fcitx-remote -c")
@@ -296,6 +298,10 @@ NeoBundle 'rhysd/vim-operator-surround'
 
 " Substitude Preview
 NeoBundle 'osyo-manga/vim-over'
+
+" Vim Asterisk
+let g:asterisk#keeppos = 1
+NeoBundle 'haya14busa/vim-asterisk'
 
 call neobundle#end()
  
