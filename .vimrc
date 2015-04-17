@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader = ' '
 
 nnoremap <Up> <C-w>k
 nnoremap <Right> <C-w>l
@@ -12,45 +12,6 @@ nnoremap <esc> :noh<cr>
 
 nnoremap <silent> gl gt
 nnoremap <silent> gh gT
-
-nnoremap [unite] <Nop>
-nmap     <Leader>u [unite]
-nnoremap <silent> [unite]b :Unite buffer<cr>
-nnoremap <silent> [unite]m :Unite mark<cr>
-nnoremap <silent> [unite]y :Unite history/yank<cr>
-nnoremap <silent> [unite]B :Unite bookmark<cr>
-nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<cr>
-nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<cr>
-
-nmap <Leader>r <Plug>(quickrun)
-
-nmap <Leader>o :TagbarToggle<cr>
-
-nmap s <Plug>(easymotion-s2)
-vmap s <Plug>(easymotion-s2)
-nmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
-vmap <Leader>j <Plug>(easymotion-j)
-vmap <Leader>k <Plug>(easymotion-k)
-
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
-
-vmap <cr> <Plug>(EasyAlign)
-
-nmap <Leader>m <Plug>(quickhl-manual-this)
-xmap <Leader>m <Plug>(quickhl-manual-this)
-nmap <Leader>M <Plug>(quickhl-manual-reset)
-xmap <Leader>M <Plug>(quickhl-manual-reset)
-
-nmap <Leader>h <Plug>(quickhl-cword-toggle)
-nmap <Leader>] <Plug>(quickhl-tag-toggle)
-
-nmap ys <Plug>(operator-surround-append)
-nmap ds <Plug>(operator-surround-delete)
-nmap cs <Plug>(operator-surround-replace)
-
-map * <Plug>(asterisk-z*)
 
 if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
@@ -171,55 +132,68 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/NeoBundle.vim'
  
-NeoBundle 'Shougo/VimProc.vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/VimProc.vim',
+\ { 'build' : {
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'unix' : 'make -f make_unix.mak',
+\   },
+\ }
+NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'osyo-manga/unite-quickfix.git'
-NeoBundle 'tacroe/unite-mark'
-NeoBundle 'Shougo/vimfiler.vim'
-" NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'osyo-manga/shabadou.vim'
+NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'dannyob/quickfixstatus'
+NeoBundle 'cohama/vim-hier'
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'junegunn/vim-easy-align'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'osyo-manga/shabadou.vim'
-NeoBundle 'cohama/vim-hier'
-NeoBundle 'dannyob/quickfixstatus'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'itchyny/lightline.vim'
-" NeoBundle 'KazuakiM/vim-qfsigns'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle "tyru/caw.vim.git"
-NeoBundle "majutsushi/tagbar"
-" NeoBundle 'soramugi/auto-ctags.vim'
-NeoBundle "kchmck/vim-coffee-script"
-NeoBundle "digitaltoad/vim-jade"
-" NeoBundle "cakebaker/scss-syntax.vim"
-" NeoBundle "AtsushiM/sass-compile.vim"
-" NeoBundleLazy 'marijnh/tern_for_vim'
-" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
-" if neobundle#tap('tern_for_vim')
-"     if executable('npm')
-"         call neobundle#config({'build': {'others': 'npm install && npm install tern-coffee'}})
-"         call neobundle#config({'autoload': {'filetypes': ['javascript', 'coffee']}})
-"     endif
-"     call neobundle#untap()
-" endif
-" Quick Highlight
+NeoBundle 'majutsushi/tagbar'
 NeoBundle "t9md/vim-quickhl"
 NeoBundle 'kana/vim-operator-user'
-NeoBundle 'rhysd/vim-operator-surround'
+NeoBundle 'rhysd/vim-operator-surround',
+\ { 'depends' : 'kana/vim-operator-user' }
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'haya14busa/vim-asterisk'
+NeoBundle 'kchmck/vim-coffee-script',
+\ { 'autoload' : { 'filetypes' : ['coffee'] } }
+NeoBundle 'digitaltoad/vim-jade',
+\ { 'autoload' : { 'filetypes' : ['jade'] } }
+
+" NeoBundle 'tacroe/unite-mark'
+" NeoBundle 'Shougo/neocomplete.vim'
+" NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'KazuakiM/vim-qfsigns'
+" NeoBundle 'soramugi/auto-ctags.vim'
+" NeoBundle 'cakebaker/scss-syntax.vim'
+" NeoBundle 'AtsushiM/sass-compile.vim'
+" NeoBundleLazy 'marijnh/tern_for_vim'
+" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
 
 function! s:on_source_unite_vim(bundle)
+  nnoremap [unite] <Nop>
+  nmap     <Leader>u [unite]
+  nnoremap <silent> [unite]b :Unite buffer<cr>
+  nnoremap <silent> [unite]m :Unite mark<cr>
+  nnoremap <silent> [unite]y :Unite history/yank<cr>
+  nnoremap <silent> [unite]B :Unite bookmark<cr>
+  nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<cr>
+  nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<cr>
+
   let g:unite_split_rule                 = 'botright' " 分割方向
   let g:unite_source_history_yank_enable = 1 " yank履歴の有効化
 endfunction
 
 function! s:on_source_vim_quickrun(bundle)
+  nmap <Leader>r <Plug>(quickrun)
+
   let g:quickrun_config = {
 \   '_' : {
 \     'runner' : 'vimproc',
@@ -236,11 +210,17 @@ function! s:on_source_vimfiler_vim(bundle)
 endfunction
 
 function! s:on_source_neocomplete_vim(bundle)
-  let g:neocomplcache_enable_at_startup = 1 " 自動起動
+  let g:neocomplcache_enable_at_startup          = 1 " 自動起動
   let g:neocomplcache_enable_underbar_completion = 1 " アンダーバー区切りを補完
 endfunction
 
 function! s:on_source_vim_easymotion(bundle)
+  nmap s         <Plug>(easymotion-s2)
+  vmap s         <Plug>(easymotion-s2)
+  nmap <Leader>j <Plug>(easymotion-j)
+  nmap <Leader>k <Plug>(easymotion-k)
+  vmap <Leader>j <Plug>(easymotion-j)
+  vmap <Leader>k <Plug>(easymotion-k)
   let g:EasyMotion_do_mapping       = 0 " デフォルトのマッピングを削除
   let g:EasyMotion_smartcase        = 1 " 大文字小文字の違いを無視
   let g:EasyMotion_use_smartsign_jp = 1 " キー位置の同じ文字は一致とみなす
@@ -249,14 +229,23 @@ function! s:on_source_vim_easymotion(bundle)
 endfunction
 
 function! s:on_source_vim_watchdogs(bundle)
-  let g:watchdogs_check_BufWritePost_enable = 1
-
-  let g:quickrun_config['vim/watchdogs_checker'] = {'type': 'watchdogs_checker/vint'}
-  let g:quickrun_config['watchdogs_checker/vint'] = {}
+  let g:watchdogs_check_BufWritePost_enable                  = 1
+  let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
+  let g:quickrun_config['watchdogs_checker/vint']            = {}
   let g:quickrun_config['watchdogs_checker/vint']['command'] = 'vint'
-  let g:quickrun_config['watchdogs_checker/vint']['exec'] = '%c %s'
+  let g:quickrun_config['watchdogs_checker/vint']['exec']    = '%c %s'
 
   " call watchdogs#setup(g:quickrun_config)
+endfunction
+
+function! s:on_source_vim_easy_align(bundle)
+  vmap <cr> <Plug>(EasyAlign)
+endfunction
+
+function! s:on_source_operator_surround_append(bundle)
+  nmap ys <Plug>(operator-surround-append)
+  nmap ds <Plug>(operator-surround-delete)
+  nmap cs <Plug>(operator-surround-replace)
 endfunction
 
 function! s:on_source_lightline_vim(bundle)
@@ -269,14 +258,40 @@ function! s:on_source_vim_qfsigns(bundle)
   let g:qfsigns#AutoJump = 1
 endfunction
 
+function! s:on_source_tagbar(bundle)
+  nmap <Leader>o :TagbarToggle<cr>
+endfunction
+
 function! s:on_source_auto_ctags_vim(bundle)
-  let g:auto_ctags = 1
+  let g:auto_ctags                = 1
   let g:auto_ctags_directory_list = ['.git', '.svn']
+endfunction
+
+function! s:on_source_caw_vim(bundle)
+  nmap <Leader>c <Plug>(caw:i:toggle)
+  vmap <Leader>c <Plug>(caw:i:toggle)
+endfunction
+
+function! s:on_source_vim_quickhl(bundle)
+  nmap <Leader>m <Plug>(quickhl-manual-this)
+  xmap <Leader>m <Plug>(quickhl-manual-this)
+  nmap <Leader>M <Plug>(quickhl-manual-reset)
+  xmap <Leader>M <Plug>(quickhl-manual-reset)
+  nmap <Leader>h <Plug>(quickhl-cword-toggle)
+  nmap <Leader>] <Plug>(quickhl-tag-toggle)
+endfunction
+
+function! s:on_source_vim_operator_surround(bundle)
+  map * <Plug>(asterisk-z*)
 endfunction
 
 function! s:on_source_vim_asterisk(bundle)
   let g:asterisk#keeppos = 1
 endfunction
+
+function! s:on_source_vim_asterisk(bundle)
+endfunction
+
 
 function! s:to_camel(str)
   let l:words = split(a:str, '\W\+')
@@ -312,44 +327,44 @@ NeoBundleCheck
 "-------------------------
 
 function! LN()
-	let name     = expand('%:t')
-	let line_no  = line('.')
-	let line_str = getline(line_no)
-	redir @*>
-	echo printf('%s:%d %s', name, line_no, line_str)
-	redir END
+  let name     = expand('%:t')
+  let line_no  = line('.')
+  let line_str = getline(line_no)
+  redir @*>
+  echo printf('%s:%d %s', name, line_no, line_str)
+  redir END
 endfunction
 
 " 個別のタブの表示設定をします
 function! GuiTabLabel()
-	" タブで表示する文字列の初期化をします
-	let l:label = ''
+  " タブで表示する文字列の初期化をします
+  let l:label = ''
 
-	" タブに含まれるバッファ(ウィンドウ)についての情報をとっておきます。
-	let l:bufnrlist = tabpagebuflist(v:lnum)
+  " タブに含まれるバッファ(ウィンドウ)についての情報をとっておきます。
+  let l:bufnrlist = tabpagebuflist(v:lnum)
 
-	" 表示文字列にバッファ名を追加します
-	" パスを全部表示させると長いのでファイル名だけを使います 詳しくは help fnamemodify()
-	let l:bufname = fnamemodify(bufname(l:bufnrlist[tabpagewinnr(v:lnum) - 1]), ':t')
-	" バッファ名がなければ No title としておきます。ここではマルチバイト文字を使わないほうが無難です
-	let l:label .= l:bufname == '' ? 'No title' : l:bufname
+  " 表示文字列にバッファ名を追加します
+  " パスを全部表示させると長いのでファイル名だけを使います 詳しくは help fnamemodify()
+  let l:bufname = fnamemodify(bufname(l:bufnrlist[tabpagewinnr(v:lnum) - 1]), ':t')
+  " バッファ名がなければ No title としておきます。ここではマルチバイト文字を使わないほうが無難です
+  let l:label .= l:bufname == '' ? 'No title' : l:bufname
 
-	" タブ内にウィンドウが複数あるときにはその数を追加します(デフォルトで一応あるので)
-	" let l:wincount = tabpagewinnr(v:lnum, '$')
-	" if l:wincount > 1
-	" 	let l:label .= '[' . l:wincount . ']'
-	" endif
+  " タブ内にウィンドウが複数あるときにはその数を追加します(デフォルトで一応あるので)
+  " let l:wincount = tabpagewinnr(v:lnum, '$')
+  " if l:wincount > 1
+  "   let l:label .= '[' . l:wincount . ']'
+  " endif
 
-	" このタブページに変更のあるバッファがるときには '[+]' を追加します(デフォルトで一応あるので)
-	for bufnr in l:bufnrlist
-		if getbufvar(bufnr, '&modified')
-			let l:label .= '[+]'
-			break
-		endif
-	endfor
+  " このタブページに変更のあるバッファがるときには '[+]' を追加します(デフォルトで一応あるので)
+  for bufnr in l:bufnrlist
+    if getbufvar(bufnr, '&modified')
+      let l:label .= '[+]'
+      break
+    endif
+  endfor
 
-	" 表示文字列を返します
-	return l:label
+  " 表示文字列を返します
+  return l:label
 endfunction
 
 " guitablabel に上の関数を設定します
