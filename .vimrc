@@ -36,11 +36,11 @@ set fileencodings=utf-8,euc-jp,cp932
 " set ambiwidth=double
 " set antialias
 
-" カラースキーム
-colorscheme desert
-
 " ファイル形式に応じて色づけ
 syntax on
+
+" カラースキーム
+colorscheme desert
 
 " 検索
 set ignorecase
@@ -131,7 +131,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
  
 " neobundle自体をneobundleで管理
 NeoBundleFetch 'Shougo/NeoBundle.vim'
- 
+
 NeoBundle 'Shougo/VimProc.vim',
 \ { 'build' : {
 \     'cygwin' : 'make -f make_cygwin.mak',
@@ -148,6 +148,7 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'cohama/vim-hier'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'junegunn/vim-easy-align'
@@ -168,7 +169,6 @@ NeoBundle 'digitaltoad/vim-jade',
 \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
 " NeoBundle 'tacroe/unite-mark'
-" NeoBundle 'Shougo/neocomplete.vim'
 " NeoBundle 'mattn/emmet-vim'
 " NeoBundle 'KazuakiM/vim-qfsigns'
 " NeoBundle 'soramugi/auto-ctags.vim'
@@ -177,7 +177,7 @@ NeoBundle 'digitaltoad/vim-jade',
 " NeoBundleLazy 'marijnh/tern_for_vim'
 " NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
 
-function! s:on_source_unite_vim(bundle)
+function! s:__unite_vim(bundle)
   nnoremap [unite] <Nop>
   nmap     <Leader>u [unite]
   nnoremap <silent> [unite]b :Unite buffer<cr>
@@ -191,7 +191,7 @@ function! s:on_source_unite_vim(bundle)
   let g:unite_source_history_yank_enable = 1 " yank履歴の有効化
 endfunction
 
-function! s:on_source_vim_quickrun(bundle)
+function! s:__vim_quickrun(bundle)
   nmap <Leader>r <Plug>(quickrun)
 
   let g:quickrun_config = {
@@ -205,16 +205,23 @@ function! s:on_source_vim_quickrun(bundle)
 \ }
 endfunction
 
-function! s:on_source_vimfiler_vim(bundle)
+function! s:__vimfiler_vim(bundle)
   let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
 endfunction
 
-function! s:on_source_neocomplete_vim(bundle)
-  let g:neocomplcache_enable_at_startup          = 1 " 自動起動
-  let g:neocomplcache_enable_underbar_completion = 1 " アンダーバー区切りを補完
+function! s:__neocomplete_vim(bundle)
+  let g:neocomplete#enable_at_startup               = 1
+  let g:neocomplete#auto_completion_start_length    = 3
+  let g:neocomplete#enable_ignore_case              = 1
+  let g:neocomplete#enable_smart_case               = 1
+  let g:neocomplete#enable_camel_case               = 1
+  let g:neocomplete#use_vimproc                     = 1
+  let g:neocomplete#sources#buffer#cache_limit_size = 1000000
+  let g:neocomplete#sources#tags#cache_limit_size   = 30000000
+  let g:neocomplete#enable_fuzzy_completion         = 1
 endfunction
 
-function! s:on_source_vim_easymotion(bundle)
+function! s:__vim_easymotion(bundle)
   nmap s         <Plug>(easymotion-s2)
   vmap s         <Plug>(easymotion-s2)
   nmap <Leader>j <Plug>(easymotion-j)
@@ -228,51 +235,54 @@ function! s:on_source_vim_easymotion(bundle)
   let g:EasyMotion_keys             = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 endfunction
 
-function! s:on_source_vim_watchdogs(bundle)
+function! s:__vim_watchdogs(bundle)
   let g:watchdogs_check_BufWritePost_enable                  = 1
-  let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
-  let g:quickrun_config['watchdogs_checker/vint']            = {}
-  let g:quickrun_config['watchdogs_checker/vint']['command'] = 'vint'
-  let g:quickrun_config['watchdogs_checker/vint']['exec']    = '%c %s'
+
+  if s:depend_cui_tool('vint', 'pip install vim-vint')
+    let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
+    let g:quickrun_config['watchdogs_checker/vint']            = {}
+    let g:quickrun_config['watchdogs_checker/vint']['command'] = 'vint'
+    let g:quickrun_config['watchdogs_checker/vint']['exec']    = '%c %s'
+  endif
 
   " call watchdogs#setup(g:quickrun_config)
 endfunction
 
-function! s:on_source_vim_easy_align(bundle)
+function! s:__vim_easy_align(bundle)
   vmap <cr> <Plug>(EasyAlign)
 endfunction
 
-function! s:on_source_operator_surround_append(bundle)
+function! s:__operator_surround_append(bundle)
   nmap ys <Plug>(operator-surround-append)
   nmap ds <Plug>(operator-surround-delete)
   nmap cs <Plug>(operator-surround-replace)
 endfunction
 
-function! s:on_source_lightline_vim(bundle)
+function! s:__lightline_vim(bundle)
   let g:lightline = {
 \   'colorscheme': 'wombat'
 \ }
 endfunction
 
-function! s:on_source_vim_qfsigns(bundle)
+function! s:__vim_qfsigns(bundle)
   let g:qfsigns#AutoJump = 1
 endfunction
 
-function! s:on_source_tagbar(bundle)
+function! s:__tagbar(bundle)
   nmap <Leader>o :TagbarToggle<cr>
 endfunction
 
-function! s:on_source_auto_ctags_vim(bundle)
+function! s:__auto_ctags_vim(bundle)
   let g:auto_ctags                = 1
   let g:auto_ctags_directory_list = ['.git', '.svn']
 endfunction
 
-function! s:on_source_caw_vim(bundle)
+function! s:__caw_vim(bundle)
   nmap <Leader>c <Plug>(caw:i:toggle)
   vmap <Leader>c <Plug>(caw:i:toggle)
 endfunction
 
-function! s:on_source_vim_quickhl(bundle)
+function! s:__vim_quickhl(bundle)
   nmap <Leader>m <Plug>(quickhl-manual-this)
   xmap <Leader>m <Plug>(quickhl-manual-this)
   nmap <Leader>M <Plug>(quickhl-manual-reset)
@@ -281,17 +291,27 @@ function! s:on_source_vim_quickhl(bundle)
   nmap <Leader>] <Plug>(quickhl-tag-toggle)
 endfunction
 
-function! s:on_source_vim_operator_surround(bundle)
+function! s:__vim_asterisk(bundle)
   map * <Plug>(asterisk-z*)
-endfunction
-
-function! s:on_source_vim_asterisk(bundle)
   let g:asterisk#keeppos = 1
 endfunction
 
-function! s:on_source_vim_asterisk(bundle)
-endfunction
 
+
+function! s:warn(msg)
+  echohl WarningMsg | echo a:msg | echohl None
+endfunction!
+
+function! s:depend_cui_tool(cmd, ...)
+  let l:able = executable(a:cmd)
+  if !l:able
+    call s:warn('コマンドラインツール「' . a:cmd . '」が見つかりません')
+    if exists('a:1')
+      call s:warn(a:1)
+    endif
+  endif
+  return l:able
+endfunction
 
 function! s:to_camel(str)
   let l:words = split(a:str, '\W\+')
@@ -308,7 +328,7 @@ endfunction
 function! s:setup_bundle()
   let l:bundles = neobundle#config#get_neobundles()
   for l:bundle in l:bundles
-    let l:funcname = 's:on_source_' . s:to_snake(l:bundle['name'])
+    let l:funcname = 's:__' . s:to_snake(l:bundle['name'])
     if exists('*' . l:funcname)
       let l:bundle.hooks.on_source = function(l:funcname)
     endif
