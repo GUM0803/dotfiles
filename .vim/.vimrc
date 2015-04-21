@@ -281,6 +281,9 @@ NeoBundle 'itchyny/lightline.vim'
 " Fugitive
 NeoBundle 'tpope/vim-fugitive'
 
+" Agit
+NeoBundle 'cohama/agit.vim'
+
 " Multiple Cursors
 NeoBundle 'terryma/vim-multiple-cursors'
 
