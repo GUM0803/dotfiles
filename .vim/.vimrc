@@ -258,9 +258,27 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'junegunn/vim-easy-align'
 
 " Light Line
-  let g:lightline = {
-\   'colorscheme': 'wombat'
-\ }
+let g:lightline = {
+      \   'colorscheme': 'wombat',
+      \   'active': {
+      \     'left': [
+      \       [ 'mode', 'paste' ],
+      \       [ 'readonly', 'absolutepath', 'modified' ]
+      \     ],
+      \     'right': [
+      \       [ 'lineinfo', 'percent' ],
+      \       [ 'fugitive' ],
+      \       [ 'fileformat', 'fileencoding', 'filetype' ]
+      \     ]
+      \   },
+      \   'component': {
+      \     'readonly': '%{&readonly?"✖":""}',
+      \     'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \   },
+      \   'component_visible_condition': {
+      \     'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \   },
+      \ }
 NeoBundle 'itchyny/lightline.vim'
 
 " Fugitive
