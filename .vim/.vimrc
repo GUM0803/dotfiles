@@ -76,7 +76,7 @@ set fileencodings=utf-8,euc-jp,cp932
 
 " フォント
 " set guifont=Consolas:h11:cANSI
-" set ambiwidth=double
+set ambiwidth=double
 " set antialias
 
 " ファイル形式に応じて色づけ
