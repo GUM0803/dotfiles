@@ -25,8 +25,8 @@ nmap <Leader>r <Plug>(quickrun)
 
 nmap <Leader>o :TagbarToggle<cr>
 
-nmap s <Plug>(easymotion-s2)
-vmap s <Plug>(easymotion-s2)
+nmap s         <Plug>(easymotion-s2)
+vmap s         <Plug>(easymotion-s2)
 nmap <Leader>j <Plug>(easymotion-j)
 nmap <Leader>k <Plug>(easymotion-k)
 vmap <Leader>j <Plug>(easymotion-j)
