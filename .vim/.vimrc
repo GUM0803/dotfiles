@@ -54,6 +54,8 @@ nmap cs <Plug>(operator-surround-replace)
 
 map * <Plug>(asterisk-z*)
 
+nmap <Leader>g :Gstatus<cr>
+
 if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
   command! CloseFcitx :call system("fcitx-remote -c")
