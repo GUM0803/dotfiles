@@ -14,6 +14,8 @@ nnoremap <esc> :noh<cr>
 
 nnoremap <silent> gl gt
 nnoremap <silent> gh gT
+nnoremap <silent> gj <C-w>w
+nnoremap <silent> gk <C-w>W
 
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
