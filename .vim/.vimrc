@@ -1,10 +1,5 @@
 let mapleader = ' '
 
-nnoremap <Up> <C-w>k
-nnoremap <Right> <C-w>l
-nnoremap <Down> <C-w>j
-nnoremap <Left> <C-w>h
-
 nnoremap <C-Right> <C-PageDown>
 nnoremap <C-Left> <C-PageUp>
 
