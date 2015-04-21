@@ -215,7 +215,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'osyo-manga/shabadou.vim'
 
 " Watchdogs
-let g:watchdogs_check_BufWritePost_enable                  = 1
+let g:watchdogs_check_BufWritePost_enable = 1
 if util#depend_cui_tool('vint', 'pip install vim-vint')
   let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
   let g:quickrun_config['watchdogs_checker/vint']            = {}
