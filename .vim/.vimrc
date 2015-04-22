@@ -314,6 +314,9 @@ NeoBundle 'kchmck/vim-coffee-script',
 NeoBundle 'digitaltoad/vim-jade',
 \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
+" Thumbnail
+" NeoBundle 'itchyny/thumbnail.vim'
+
 " Unite Mark
 " NeoBundle 'tacroe/unite-mark'
 
