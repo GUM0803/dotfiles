@@ -64,6 +64,12 @@ if executable('fcitx-remote')
   command! CloseFcitx :call system("fcitx-remote -c")
 endif
 
+if has('vim_starting') 
+  if executable('xset')
+    call system('xset r rate 200 30')
+  endif
+endif
+
 " Google 翻訳
 set keywordprg=trans\ :ja
 
