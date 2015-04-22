@@ -64,9 +64,6 @@ if executable('fcitx-remote')
   command! CloseFcitx :call system("fcitx-remote -c")
 endif
 
-" 現在日時を入力
-" nmap <C-o><C-o> <ESC>i<C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR><ESC>
-
 " Google 翻訳
 set keywordprg=trans\ :ja
 
