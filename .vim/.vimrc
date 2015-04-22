@@ -1,8 +1,5 @@
 let mapleader = ' '
 
-nnoremap <C-Right> <C-PageDown>
-nnoremap <C-Left> <C-PageUp>
-
 vnoremap <silent> <C-p> "0p<CR>
 
 nnoremap <esc> :noh<cr>
