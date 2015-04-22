@@ -339,11 +339,11 @@ let g:asterisk#keeppos = 1
 NeoBundle 'haya14busa/vim-asterisk'
 
 " Coffee Script
-NeoBundle 'kchmck/vim-coffee-script',
+NeoBundleLazy 'kchmck/vim-coffee-script',
       \ { 'autoload' : { 'filetypes' : ['coffee'] } }
 
 " Jade
-NeoBundle 'digitaltoad/vim-jade',
+NeoBundleLazy 'digitaltoad/vim-jade',
       \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
 " Dynamic Window Manager
