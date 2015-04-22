@@ -59,6 +59,19 @@ nnoremap <silent> [git]s :Gstatus<cr>
 nnoremap <silent> [git]l :AgitFile<cr>
 nnoremap <silent> [git]L :Agit<cr>
 
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
 if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
   command! CloseFcitx :call system("fcitx-remote -c")
@@ -252,6 +265,10 @@ let g:neocomplete#sources#buffer#cache_limit_size = 1000000
 let g:neocomplete#sources#tags#cache_limit_size   = 30000000
 let g:neocomplete#enable_fuzzy_completion         = 1
 NeoBundle 'Shougo/neocomplete.vim'
+
+" Neo Snippet
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 " Junkfile
 NeoBundle 'Shougo/junkfile.vim'
