@@ -326,6 +326,9 @@ NeoBundle 'kchmck/vim-coffee-script',
 NeoBundle 'digitaltoad/vim-jade',
 \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
+" Dynamic Window Manager
+" NeoBundle 'spolu/dwm.vim'
+
 " Tabman
 " NeoBundle 'kien/tabman.vim'
 
