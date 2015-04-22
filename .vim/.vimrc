@@ -78,10 +78,7 @@ set ambiwidth=double
 " set antialias
 
 " ファイル形式に応じて色づけ
-syntax on
-
-" カラースキーム
-colorscheme desert
+syntax enable
 
 " 検索
 set ignorecase
@@ -182,6 +179,18 @@ NeoBundle 'Shougo/VimProc.vim',
 " Vim Filer
 let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
 NeoBundle 'Shougo/vimfiler.vim'
+
+" Color Scheme Solarized
+NeoBundle 'altercation/vim-colors-solarized'
+
+" Color Scheme mustang
+NeoBundle 'croaker/mustang-vim'
+
+" Color Scheme jellybeans
+NeoBundle 'nanotech/jellybeans.vim'
+
+" Color Scheme molokai
+NeoBundle 'tomasr/molokai'
 
 " Unite
 let g:unite_split_rule                 = 'botright' " 分割方向
@@ -351,3 +360,7 @@ NeoBundleCheck
 "-------------------------
 " End Neobundle Settings.
 "-------------------------
+
+" カラースキーム
+set background=dark
+colorscheme solarized
