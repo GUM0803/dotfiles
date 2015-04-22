@@ -51,10 +51,11 @@ nmap cs <Plug>(operator-surround-replace)
 
 map * <Plug>(asterisk-z*)
 
-nnoremap [fugitive] <Nop>
-nmap     <Leader>g [fugitive]
-nnoremap <silent> [fugitive]s :Gstatus<cr>
-nnoremap <silent> [fugitive]l :Glog<cr>
+nnoremap [git] <Nop>
+nmap     <Leader>g [git]
+nnoremap <silent> [git]s :Gstatus<cr>
+nnoremap <silent> [git]l :AgitFile<cr>
+nnoremap <silent> [git]L :Agit<cr>
 
 if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
