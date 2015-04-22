@@ -1,3 +1,8 @@
+set encoding=UTF-8
+set fileencodings=utf-8,euc-jp,cp932
+" set termencoding=UTF-8
+scriptencoding utf-8
+
 let mapleader = ' '
 
 vnoremap <silent> <C-p> "0p<CR>
@@ -64,13 +69,6 @@ endif
 
 " Google 翻訳
 set keywordprg=trans\ :ja
-
-" エンコード
-" set encoding=UTF-8
-" set fileencoding=UTF-8
-set fileencodings=utf-8,euc-jp,cp932
-" set termencoding=UTF-8
-" scriptencoding utf-8
 
 " フォント
 " set guifont=Consolas:h11:cANSI
