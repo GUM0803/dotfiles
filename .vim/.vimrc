@@ -211,14 +211,14 @@ NeoBundle 'Shougo/vimshell'
 
 " Quick Run
 let g:quickrun_config = {
-\   '_' : {
-\     'runner' : 'vimproc',
-\     'runner/vimproc/updatetime' : 50
-\   },
-\   'watchdogs_checker/_' : {
-\     'outputter/quickfix/open_cmd' : '',
-\   },
-\ }
+      \   '_' : {
+      \     'runner' : 'vimproc',
+      \     'runner/vimproc/updatetime' : 50
+      \   },
+      \   'watchdogs_checker/_' : {
+      \     'outputter/quickfix/open_cmd' : '',
+      \   },
+      \ }
 NeoBundle 'thinca/vim-quickrun'
 
 " Shabadou
@@ -312,7 +312,7 @@ NeoBundle "t9md/vim-quickhl"
 " Operator Surround
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'rhysd/vim-operator-surround',
-\ { 'depends' : 'kana/vim-operator-user' }
+      \ { 'depends' : 'kana/vim-operator-user' }
 
 " Over
 NeoBundle 'osyo-manga/vim-over'
@@ -323,11 +323,11 @@ NeoBundle 'haya14busa/vim-asterisk'
 
 " Coffee Script
 NeoBundle 'kchmck/vim-coffee-script',
-\ { 'autoload' : { 'filetypes' : ['coffee'] } }
+      \ { 'autoload' : { 'filetypes' : ['coffee'] } }
 
 " Jade
 NeoBundle 'digitaltoad/vim-jade',
-\ { 'autoload' : { 'filetypes' : ['jade'] } }
+      \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
 " Dynamic Window Manager
 " NeoBundle 'spolu/dwm.vim'
