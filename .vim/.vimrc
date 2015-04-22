@@ -71,7 +71,9 @@ if has('vim_starting')
 endif
 
 " Google 翻訳
-set keywordprg=trans\ :ja
+if util#depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
+  set keywordprg=trans\ :ja
+endif
 
 " フォント
 " set guifont=Consolas:h11:cANSI
