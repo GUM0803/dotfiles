@@ -188,6 +188,9 @@ let g:unite_split_rule                 = 'botright' " 分割方向
 let g:unite_source_history_yank_enable = 1 " yank履歴の有効化
 NeoBundle 'Shougo/unite.vim'
 
+" Unite Color Scheme
+NeoBundle 'ujihisa/unite-colorscheme'
+
 " Quick Fix
 NeoBundle 'osyo-manga/unite-quickfix.git'
 
