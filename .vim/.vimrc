@@ -326,6 +326,9 @@ NeoBundle 'kchmck/vim-coffee-script',
 NeoBundle 'digitaltoad/vim-jade',
 \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
+" Tabman
+" NeoBundle 'kien/tabman.vim'
+
 " Thumbnail
 " NeoBundle 'itchyny/thumbnail.vim'
 
