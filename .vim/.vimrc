@@ -229,6 +229,10 @@ NeoBundleLazy 'kchmck/vim-coffee-script',
 NeoBundleLazy 'digitaltoad/vim-jade',
       \ { 'autoload' : { 'filetypes' : ['jade'] } }
 " }}}
+" Vim Json "{{{
+NeoBundleLazy 'elzr/vim-json',
+      \ { 'autoload' : { 'filetypes' : ['json'] } }
+"}}}
 " Dynamic Window Manager {{{
 " NeoBundle 'spolu/dwm.vim'
 " " }}}
