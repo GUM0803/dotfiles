@@ -5,9 +5,9 @@ endfunction
 function! util#depend_cui_tool(cmd, ...)
   let l:able = executable(a:cmd)
   if !l:able
-    call s:warn('コマンドラインツール「' . a:cmd . '」が見つかりません')
+    call util#warn('コマンドラインツール「' . a:cmd . '」が見つかりません')
     if exists('a:1')
-      call s:warn(a:1)
+      call util#warn(a:1)
     endif
   endif
   return l:able
