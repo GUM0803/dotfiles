@@ -36,7 +36,7 @@ function! s:to_snake(str)
   return join(l:words, '_')
 endfunction
 
-function! s:LN()
+function! s:line_info()
   let name     = expand('%:t')
   let line_no  = line('.')
   let line_str = getline(line_no)
