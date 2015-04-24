@@ -45,7 +45,7 @@ function! s:line_info()
   redir END
 endfunction
 
-function! s:GuiTabLabel()
+function! s:provide_tab_label()
   let l:label = ''
   let l:bufnrlist = tabpagebuflist(v:lnum)
   let l:bufname = fnamemodify(bufname(l:bufnrlist[tabpagewinnr(v:lnum) - 1]), ':t')
@@ -509,7 +509,7 @@ set showtabline=2
 " gVimでもテキストベースのタブページを使う
 set guioptions-=e
 " タブの表示
-set guitablabel=%N:\ %{s:GuiTabLabel()}
+set guitablabel=%N:\ %{s:provide_tab_label()}
 
 " GUIオプション
 set guioptions-=T
