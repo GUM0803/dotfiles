@@ -266,9 +266,9 @@ NeoBundleLazy 'digitaltoad/vim-jade',
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
-" Neo Bundle }}}
+"}}}
 
-" Key Bind {{{
+" Key Binds"{{{
 let mapleader = ' '
 
 vnoremap <silent> <C-p> "0p<CR>
@@ -342,9 +342,9 @@ if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
   command! CloseFcitx :call system("fcitx-remote -c")
 endif
-" Key Bind }}}
+"}}}
 
-" Option {{{
+" Options"{{{
 if has('vim_starting') 
   if executable('xset')
     call system('xset r rate 200 30')
@@ -452,4 +452,4 @@ set foldmethod=marker
 " カラースキーム
 set background=dark
 colorscheme solarized
-" Option }}}
+"}}}
