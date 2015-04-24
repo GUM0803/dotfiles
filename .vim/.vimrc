@@ -173,6 +173,9 @@ NeoBundleLazy 'kchmck/vim-coffee-script',
 NeoBundleLazy 'digitaltoad/vim-jade',
       \ { 'autoload' : { 'filetypes' : ['jade'] } }
 
+" Util
+NeoBundleLocal ~/dotfiles/.vim
+
 " Dynamic Window Manager
 " NeoBundle 'spolu/dwm.vim'
 
