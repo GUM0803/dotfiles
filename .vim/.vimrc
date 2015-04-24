@@ -7,14 +7,65 @@ let s:is_win   = has('win32') || has('win64')
 let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
 
-" Neo Bundle {{{
+" Utility Functions"{{{
+function! s:warn(msg)
+  echohl WarningMsg | echo a:msg | echohl None
+endfunction
+
+function! s:depend_cui_tool(cmd, ...)
+  let l:able = executable(a:cmd)
+  if !l:able
+    call s:warn('コマンドラインツール「' . a:cmd . '」が見つかりません')
+    if exists('a:1')
+      call s:warn(a:1)
+    endif
+  endif
+  return l:able
+endfunction
+
+function! s:to_camel(str)
+  let l:words = split(a:str, '\W\+')
+  call map(l:words, 'toupper(v:val[0]) . v:val[1:]')
+  return join(l:words, '')
+endfunction
+
+function! s:to_snake(str)
+  let l:words = split(a:str, '\W\+')
+  call map(l:words, 'tolower(v:val)')
+  return join(l:words, '_')
+endfunction
+
+function! s:LN()
+  let name     = expand('%:t')
+  let line_no  = line('.')
+  let line_str = getline(line_no)
+  redir @*>
+  echo printf('%s:%d %s', name, line_no, line_str)
+  redir END
+endfunction
+
+function! s:GuiTabLabel()
+  let l:label = ''
+  let l:bufnrlist = tabpagebuflist(v:lnum)
+  let l:bufname = fnamemodify(bufname(l:bufnrlist[tabpagewinnr(v:lnum) - 1]), ':t')
+  let l:label .= l:bufname == '' ? 'No title' : l:bufname
+
+  for bufnr in l:bufnrlist
+    if getbufvar(bufnr, '&modified')
+      let l:label .= '[+]'
+      break
+    endif
+  endfor
+
+  return l:label
+endfunction
+"}}}
+
+" Plugins"{{{
 set runtimepath+=~/.vim/bundle/NeoBundle.vim/
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/NeoBundle.vim'
-" Util  {{{
-NeoBundleLocal ~/dotfiles/.vim
-" }}}
 " Vim Proc {{{
 NeoBundle 'Shougo/VimProc.vim',
       \ { 'build' : {
@@ -71,7 +122,7 @@ NeoBundle 'osyo-manga/shabadou.vim'
 " }}}
 " Watchdogs {{{
 let g:watchdogs_check_BufWritePost_enable = 1
-if util#depend_cui_tool('vint', 'pip install vim-vint')
+if s:depend_cui_tool('vint', 'pip install vim-vint')
   let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
   let g:quickrun_config['watchdogs_checker/vint']            = {}
   let g:quickrun_config['watchdogs_checker/vint']['command'] = 'vint'
@@ -301,7 +352,7 @@ if has('vim_starting')
 endif
 
 " Google 翻訳
-if util#depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
+if s:depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
   set keywordprg=trans\ :ja
 endif
 
@@ -388,7 +439,7 @@ set showtabline=2
 " gVimでもテキストベースのタブページを使う
 set guioptions-=e
 " タブの表示
-set guitablabel=%N:\ %{util#GuiTabLabel()}
+set guitablabel=%N:\ %{s:GuiTabLabel()}
 
 " GUIオプション
 set guioptions-=T
