@@ -10,6 +10,9 @@ set runtimepath+=~/.vim/bundle/NeoBundle.vim/
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/NeoBundle.vim'
 
+" Util 
+NeoBundleLocal ~/dotfiles/.vim
+
 " Vim Proc
 NeoBundle 'Shougo/VimProc.vim',
 \ { 'build' : {
@@ -172,9 +175,6 @@ NeoBundleLazy 'kchmck/vim-coffee-script',
 " Jade
 NeoBundleLazy 'digitaltoad/vim-jade',
       \ { 'autoload' : { 'filetypes' : ['jade'] } }
-
-" Util
-NeoBundleLocal ~/dotfiles/.vim
 
 " Dynamic Window Manager
 " NeoBundle 'spolu/dwm.vim'
