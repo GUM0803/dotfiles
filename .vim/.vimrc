@@ -3,179 +3,6 @@ set fileencodings=utf-8,euc-jp,cp932
 " set termencoding=UTF-8
 scriptencoding utf-8
 
-let mapleader = ' '
-
-vnoremap <silent> <C-p> "0p<CR>
-
-nnoremap <esc> :noh<cr>
-
-nnoremap <silent> gl gt
-nnoremap <silent> gh gT
-nnoremap <silent> gj <C-w>w
-nnoremap <silent> gk <C-w>W
-
-nnoremap [unite] <Nop>
-nmap     <Leader>u [unite]
-nnoremap <silent> [unite]b :Unite buffer<cr>
-nnoremap <silent> [unite]m :Unite mark<cr>
-nnoremap <silent> [unite]y :Unite history/yank<cr>
-nnoremap <silent> [unite]B :Unite bookmark<cr>
-nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<cr>
-nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<cr>
-
-nmap <Leader>r <Plug>(quickrun)
-
-nmap <Leader>o :TagbarToggle<cr>
-
-nmap s         <Plug>(easymotion-s2)
-vmap s         <Plug>(easymotion-s2)
-nmap <Leader>j <Plug>(easymotion-j)
-nmap <Leader>k <Plug>(easymotion-k)
-vmap <Leader>j <Plug>(easymotion-j)
-vmap <Leader>k <Plug>(easymotion-k)
-
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
-
-vmap <cr> <Plug>(EasyAlign)
-
-nmap <Leader>m <Plug>(quickhl-manual-this)
-xmap <Leader>m <Plug>(quickhl-manual-this)
-nmap <Leader>M <Plug>(quickhl-manual-reset)
-xmap <Leader>M <Plug>(quickhl-manual-reset)
-
-nmap <Leader>h <Plug>(quickhl-cword-toggle)
-nmap <Leader>] <Plug>(quickhl-tag-toggle)
-
-nmap ys <Plug>(operator-surround-append)
-nmap ds <Plug>(operator-surround-delete)
-nmap cs <Plug>(operator-surround-replace)
-
-map * <Plug>(asterisk-z*)
-
-nnoremap [git] <Nop>
-nmap     <Leader>g [git]
-nnoremap <silent> [git]s :Gstatus<cr>
-nnoremap <silent> [git]l :AgitFile<cr>
-nnoremap <silent> [git]L :Agit<cr>
-
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<TAB>"
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
-if executable('fcitx-remote')
-  inoremap <esc> <esc>:CloseFcitx<cr>
-  command! CloseFcitx :call system("fcitx-remote -c")
-endif
-
-if has('vim_starting') 
-  if executable('xset')
-    call system('xset r rate 200 30')
-  endif
-endif
-
-" Google 翻訳
-if util#depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
-  set keywordprg=trans\ :ja
-endif
-
-" フォント
-" set guifont=Consolas:h11:cANSI
-set ambiwidth=double
-" set antialias
-
-" ファイル形式に応じて色づけ
-syntax enable
-
-" 検索
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-
-set nrformats=hex
-
-" ファイルパスの区切り文字
-" set noshellslash
-
-" クリップボード
-set clipboard=unnamedplus,unnamed
-
-" バックアップファイル
-set nobackup
-
-" スワップファイル
-set noswapfile
-set directory=~/.vim/tmp
-
-" アンドゥファイル
-set noundofile
-
-" シェル
-" set shell=bash.bat
-
-" 行数・列数
-" set lines=60
-" set columns=110
-
-" マウス
-set mouse=h
-
-" ステータスの表示
-set laststatus=2
-" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-
-" 行番号を表示
-set number
-
-" 行・列のハイライト
-set cursorline
-set cursorcolumn
-
-" 行を常に中央に
-set scrolloff=999
-
-" 折り返しを禁止
-set nowrap
-
-" 対応する括弧を強調表示
-set showmatch
-
-" タブ・インデント
-set expandtab " タブをスペースに変換しない
-set tabstop=2 " タブをスペース何個で表示するか
-set shiftwidth=2 " >>などで挿入される量
-set softtabstop=0 " タブを押した時の挿入量 0の場合tabstopの値になる。
-" set autoindent
-
-" タブ、空白、改行の可視化
-set list
-set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
-
-" カレントディレクトリの自動切換え
-set noautochdir
-
-" タブページを常に表示
-set showtabline=2
-" gVimでもテキストベースのタブページを使う
-set guioptions-=e
-" タブの表示
-set guitablabel=%N:\ %{util#GuiTabLabel()}
-
-" GUIオプション
-set guioptions-=T
-set guioptions-=m
-set guioptions-=r
-
 "---------------------------
 " Start Neobundle Settings.
 "---------------------------
@@ -386,6 +213,180 @@ NeoBundleCheck
 "-------------------------
 " End Neobundle Settings.
 "-------------------------
+"
+let mapleader = ' '
+
+vnoremap <silent> <C-p> "0p<CR>
+
+nnoremap <esc> :noh<cr>
+
+nnoremap <silent> gl gt
+nnoremap <silent> gh gT
+nnoremap <silent> gj <C-w>w
+nnoremap <silent> gk <C-w>W
+
+nnoremap [unite] <Nop>
+nmap     <Leader>u [unite]
+nnoremap <silent> [unite]b :Unite buffer<cr>
+nnoremap <silent> [unite]m :Unite mark<cr>
+nnoremap <silent> [unite]y :Unite history/yank<cr>
+nnoremap <silent> [unite]B :Unite bookmark<cr>
+nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<cr>
+nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<cr>
+
+nmap <Leader>r <Plug>(quickrun)
+
+nmap <Leader>o :TagbarToggle<cr>
+
+nmap s         <Plug>(easymotion-s2)
+vmap s         <Plug>(easymotion-s2)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
+vmap <Leader>j <Plug>(easymotion-j)
+vmap <Leader>k <Plug>(easymotion-k)
+
+nmap <Leader>c <Plug>(caw:i:toggle)
+vmap <Leader>c <Plug>(caw:i:toggle)
+
+vmap <cr> <Plug>(EasyAlign)
+
+nmap <Leader>m <Plug>(quickhl-manual-this)
+xmap <Leader>m <Plug>(quickhl-manual-this)
+nmap <Leader>M <Plug>(quickhl-manual-reset)
+xmap <Leader>M <Plug>(quickhl-manual-reset)
+
+nmap <Leader>h <Plug>(quickhl-cword-toggle)
+nmap <Leader>] <Plug>(quickhl-tag-toggle)
+
+nmap ys <Plug>(operator-surround-append)
+nmap ds <Plug>(operator-surround-delete)
+nmap cs <Plug>(operator-surround-replace)
+
+map * <Plug>(asterisk-z*)
+
+nnoremap [git] <Nop>
+nmap     <Leader>g [git]
+nnoremap <silent> [git]s :Gstatus<cr>
+nnoremap <silent> [git]l :AgitFile<cr>
+nnoremap <silent> [git]L :Agit<cr>
+
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+if executable('fcitx-remote')
+  inoremap <esc> <esc>:CloseFcitx<cr>
+  command! CloseFcitx :call system("fcitx-remote -c")
+endif
+
+if has('vim_starting') 
+  if executable('xset')
+    call system('xset r rate 200 30')
+  endif
+endif
+
+" Google 翻訳
+if util#depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
+  set keywordprg=trans\ :ja
+endif
+
+" フォント
+" set guifont=Consolas:h11:cANSI
+set ambiwidth=double
+" set antialias
+
+" ファイル形式に応じて色づけ
+syntax enable
+
+" 検索
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+set nrformats=hex
+
+" ファイルパスの区切り文字
+" set noshellslash
+
+" クリップボード
+set clipboard=unnamedplus,unnamed
+
+" バックアップファイル
+set nobackup
+
+" スワップファイル
+set noswapfile
+set directory=~/.vim/tmp
+
+" アンドゥファイル
+set noundofile
+
+" シェル
+" set shell=bash.bat
+
+" 行数・列数
+" set lines=60
+" set columns=110
+
+" マウス
+set mouse=h
+
+" ステータスの表示
+set laststatus=2
+" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+
+" 行番号を表示
+set number
+
+" 行・列のハイライト
+set cursorline
+set cursorcolumn
+
+" 行を常に中央に
+set scrolloff=999
+
+" 折り返しを禁止
+set nowrap
+
+" 対応する括弧を強調表示
+set showmatch
+
+" タブ・インデント
+set expandtab " タブをスペースに変換しない
+set tabstop=2 " タブをスペース何個で表示するか
+set shiftwidth=2 " >>などで挿入される量
+set softtabstop=0 " タブを押した時の挿入量 0の場合tabstopの値になる。
+" set autoindent
+
+" タブ、空白、改行の可視化
+set list
+set listchars=tab:>.,trail:_,eol:↲,extends:>,precedes:<,nbsp:%
+
+" カレントディレクトリの自動切換え
+set noautochdir
+
+" タブページを常に表示
+set showtabline=2
+" gVimでもテキストベースのタブページを使う
+set guioptions-=e
+" タブの表示
+set guitablabel=%N:\ %{util#GuiTabLabel()}
+
+" GUIオプション
+set guioptions-=T
+set guioptions-=m
+set guioptions-=r
+
 
 " カラースキーム
 set background=dark
