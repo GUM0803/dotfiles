@@ -306,7 +306,9 @@ if util#depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
 endif
 
 " フォント
-" set guifont=Consolas:h11:cANSI
+if s:is_win
+  set guifont=Consolas:h11:cANSI
+endif
 set ambiwidth=double
 " set antialias
 
