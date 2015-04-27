@@ -234,6 +234,10 @@ NeoBundleLazy 'digitaltoad/vim-jade',
 NeoBundleLazy 'elzr/vim-json',
       \ { 'autoload' : { 'filetypes' : ['json'] } }
 "}}}
+" Open Browser "{{{
+NeoBundleLazy 'tyru/open-browser.vim',
+      \ { 'autoload' : { 'filetypes' : ['markdown'] } }
+"}}}
 " Dynamic Window Manager {{{
 " NeoBundle 'spolu/dwm.vim'
 " " }}}
