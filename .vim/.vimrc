@@ -398,8 +398,10 @@ set noundofile
 " set shell=bash.bat
 
 " 行数・列数
-" set lines=60
-" set columns=110
+if s:is_win
+  set lines=60
+  set columns=110
+endif
 
 " マウス
 set mouse=h
