@@ -240,7 +240,7 @@ NeoBundleLazy 'tyru/open-browser.vim',
 "}}}
 " Previm "{{{
 let g:previm_disable_default_css = 1
-let g:previm_custom_css_path = expand('~/.vim/bundle/github-markdown-css/github-markdown.css')
+let g:previm_custom_css_path     = expand('~/.vim/bundle/github-markdown-css/github-markdown.css')
 NeoBundleLazy 'kannokanno/previm',
       \ { 'autoload' : { 'filetypes' : ['markdown'] } }
 augroup PrevimSettings
