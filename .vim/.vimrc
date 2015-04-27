@@ -4,6 +4,7 @@ set fileencodings=utf-8,euc-jp,cp932
 scriptencoding utf-8
 
 let s:is_win   = has('win32') || has('win64')
+" let s:is_mingw = system('uname') =~? '^MINGW'
 let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
 
@@ -395,7 +396,11 @@ set directory=~/.vim/tmp
 set noundofile
 
 " シェル
-" set shell=bash.bat
+" if s:is_mingw
+"   set termencoding=UTF-8
+"   set shell=E:/Software/Mingw/msys/1.0/bin/mintty\ /bin/bash\ -l
+"   set shellcmdflag=-c
+" endif
 
 " 行数・列数
 if s:is_win
