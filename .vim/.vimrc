@@ -243,11 +243,11 @@ let g:previm_disable_default_css = 1
 let g:previm_custom_css_path = expand('~/.vim/bundle/github-markdown-css/github-markdown.css')
 NeoBundleLazy 'kannokanno/previm',
       \ { 'autoload' : { 'filetypes' : ['markdown'] } }
-"}}}
 augroup PrevimSettings
     autocmd!
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
+"}}}
 " Github Markdown Css "{{{
 NeoBundleFetch 'tigmium/github-markdown-css'
 "}}}
