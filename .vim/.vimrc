@@ -251,6 +251,8 @@ augroup PrevimSettings
     " autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
     " autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} PrevimOpen<cr>
 augroup END
+
+" Unused Plugins "{{{
 " Dynamic Window Manager {{{
 " NeoBundle 'spolu/dwm.vim'
 " " }}}
@@ -285,6 +287,7 @@ augroup END
 " NeoBundleLazy 'marijnh/tern_for_vim'
 " NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
 " " }}}
+"}}}
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
