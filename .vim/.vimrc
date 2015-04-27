@@ -246,8 +246,7 @@ NeoBundleLazy 'kannokanno/previm',
 "}}}
 augroup PrevimSettings
     autocmd!
-    " autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-    " autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} PrevimOpen<cr>
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 " Github Markdown Css "{{{
 NeoBundleFetch 'tigmium/github-markdown-css'
