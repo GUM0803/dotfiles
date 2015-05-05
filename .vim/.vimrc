@@ -281,6 +281,9 @@ augroup END
 " Github Markdown Css "{{{
 NeoBundleFetch 'tigmium/github-markdown-css'
 "}}}
+" Indent Line "{{{
+NeoBundle 'Yggdroot/indentLine'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
