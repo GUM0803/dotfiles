@@ -60,6 +60,26 @@ function! s:GuiTabLabel()
 
   return l:label
 endfunction
+
+function! s:mytest()
+  let l:path = expand('%:p')
+  let l:name = substitute(l:path, '/\|:', '_', 'g') . '.md'
+  let l:count_line = line('$')
+  let l:cursor_line = line('.')
+  setlocal cursorbind
+  echom bufwinnr(l:path)
+  belowright 50vnew
+  call junkfile#open_immediately(l:name)
+  let l:count_line_diff = l:count_line - line('$')
+  if l:count_line_diff > 0
+    execute ':normal $' . l:count_line_diff . 'o'
+  endif
+  execute ':normal ' . l:cursor_line . 'G'
+  setlocal cursorbind
+  setlocal nocursorline
+  setlocal nocursorcolumn
+endfunction
+" call s:mytest()
 "}}}
 
 " Plugins"{{{
