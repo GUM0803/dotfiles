@@ -472,8 +472,8 @@ set laststatus=2
 set number
 
 " 行・列のハイライト
-set cursorline
-set cursorcolumn
+set nocursorline
+set nocursorcolumn
 
 " 行を常に中央に
 set scrolloff=999
