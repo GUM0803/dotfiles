@@ -287,6 +287,9 @@ NeoBundle 'Yggdroot/indentLine'
 " Memo List "{{{
 NeoBundle 'glidenote/memolist.vim'
 "}}}
+" Git Gutter "{{{
+NeoBundle 'airblade/vim-gitgutter'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
