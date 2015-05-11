@@ -284,6 +284,9 @@ NeoBundleFetch 'tigmium/github-markdown-css'
 " Indent Line "{{{
 NeoBundle 'Yggdroot/indentLine'
 "}}}
+" Memo List "{{{
+NeoBundle 'glidenote/memolist.vim'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
