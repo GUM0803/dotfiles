@@ -8,6 +8,7 @@ let s:is_win   = has('win32') || has('win64')
 let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
 
+
 " Utility Functions"{{{
 function! s:warn(msg)
   echohl WarningMsg | echo a:msg | echohl None
@@ -293,6 +294,9 @@ NeoBundle 'airblade/vim-gitgutter'
 " Signature "{{{
 NeoBundle 'kshenoy/vim-signature'
 "}}}
+" Unite Mark {{{
+NeoBundle 'tacroe/unite-mark'
+" " }}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
@@ -303,9 +307,6 @@ NeoBundle 'kshenoy/vim-signature'
 " " }}}
 " Thumbnail {{{
 " NeoBundle 'itchyny/thumbnail.vim'
-" " }}}
-" Unite Mark {{{
-" NeoBundle 'tacroe/unite-mark'
 " " }}}
 " Emmet {{{
 " NeoBundle 'mattn/emmet-vim'
