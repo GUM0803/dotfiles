@@ -413,7 +413,7 @@ endif
 
 nmap n n<Plug>(anzu-update-search-status)
 nmap N N<Plug>(anzu-update-search-status)
-nmap * <Plug>(asterisk-z*)<Plug>(anzu-update-search-status)
+map * <Plug>(asterisk-z*)<Plug>(anzu-update-search-status)
 nmap # #<Plug>(anzu-update-search-status)
 
 " clear status
