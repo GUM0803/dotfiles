@@ -195,11 +195,11 @@ let g:lightline = {
       \   'active': {
       \     'left': [
       \       [ 'mode', 'paste' ],
-      \       [ 'readonly', 'absolutepath', 'modified' ]
+      \       [ 'readonly', 'absolutepath', 'modified', 'anzu' ]
       \     ],
       \     'right': [
       \       [ 'lineinfo', 'percent' ],
-      \       [ 'fugitive', 'anzu' ],
+      \       [ 'fugitive' ],
       \       [ 'fileformat', 'fileencoding', 'filetype' ]
       \     ]
       \   },
