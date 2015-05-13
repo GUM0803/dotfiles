@@ -301,7 +301,7 @@ NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'tacroe/unite-mark'
 " " }}}
 " Anzu "{{{
-let g:anzu_status_format = '%i/%l'
+let g:anzu_status_format = '(%i/%l)'
 NeoBundle 'osyo-manga/vim-anzu'
 "}}}
 
