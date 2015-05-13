@@ -8,7 +8,6 @@ let s:is_win   = has('win32') || has('win64')
 let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
 
-
 " Utility Functions"{{{
 function! s:warn(msg)
   echohl WarningMsg | echo a:msg | echohl None
