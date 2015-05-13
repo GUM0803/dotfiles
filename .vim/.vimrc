@@ -297,6 +297,9 @@ NeoBundle 'kshenoy/vim-signature'
 " Unite Mark {{{
 NeoBundle 'tacroe/unite-mark'
 " " }}}
+" Anzu "{{{
+NeoBundle 'osyo-manga/vim-anzu'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
