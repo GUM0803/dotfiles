@@ -199,13 +199,16 @@ let g:lightline = {
       \     ],
       \     'right': [
       \       [ 'lineinfo', 'percent' ],
-      \       [ 'fugitive' ],
+      \       [ 'fugitive', 'anzu' ],
       \       [ 'fileformat', 'fileencoding', 'filetype' ]
       \     ]
       \   },
       \   'component': {
       \     'readonly': '%{&readonly?"✖":""}',
       \     'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \   },
+      \   'component_function': {
+      \     'anzu': 'anzu#search_status',
       \   },
       \   'component_visible_condition': {
       \     'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
@@ -298,6 +301,7 @@ NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'tacroe/unite-mark'
 " " }}}
 " Anzu "{{{
+let g:anzu_status_format = '%i/%l'
 NeoBundle 'osyo-manga/vim-anzu'
 "}}}
 
@@ -408,6 +412,15 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" mapping
+nmap n n<Plug>(anzu-update-search-status)
+nmap N N<Plug>(anzu-update-search-status)
+nmap * *<Plug>(anzu-update-search-status)
+nmap # #<Plug>(anzu-update-search-status)
+
+" clear status
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 
 if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
