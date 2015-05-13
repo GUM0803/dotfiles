@@ -392,8 +392,6 @@ nmap ys <Plug>(operator-surround-append)
 nmap ds <Plug>(operator-surround-delete)
 nmap cs <Plug>(operator-surround-replace)
 
-map * <Plug>(asterisk-z*)
-
 nnoremap [git] <Nop>
 nmap     <Leader>g [git]
 nnoremap <silent> [git]s :Gstatus<cr>
@@ -413,10 +411,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-" mapping
 nmap n n<Plug>(anzu-update-search-status)
 nmap N N<Plug>(anzu-update-search-status)
-nmap * *<Plug>(anzu-update-search-status)
+nmap * <Plug>(asterisk-z*)<Plug>(anzu-update-search-status)
 nmap # #<Plug>(anzu-update-search-status)
 
 " clear status
