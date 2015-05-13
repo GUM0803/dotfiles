@@ -290,6 +290,9 @@ NeoBundle 'glidenote/memolist.vim'
 " Git Gutter "{{{
 NeoBundle 'airblade/vim-gitgutter'
 "}}}
+" Signature "{{{
+NeoBundle 'kshenoy/vim-signature'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
