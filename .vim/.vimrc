@@ -61,25 +61,49 @@ function! s:provide_tab_label()
   return l:label
 endfunction
 
-function! s:mytest()
-  let l:path = expand('%:p')
-  let l:name = substitute(l:path, '/\|:', '_', 'g') . '.md'
+function! s:outerdoc_open()
+  function! l:get_outerdoc_name()
+    let l:path = expand('%:p')
+    return substitute(l:path, '/\|:', '_', 'g') . '.md'
+  endfunction
+
+  function! l:setup_source_buffer()
+    setlocal cursorbind
+  endfunction
+
+  function! l:setup_outerdoc_buffer()
+    setlocal cursorbind
+    setlocal nocursorline
+    setlocal nocursorcolumn
+  endfunction
+
+  function! l:create_outerdoc(path)
+  endfunction
+
+  function! l:fill_in_blank_line(path, count_line)
+    " execute ':normal $' . l:count_line_diff . 'o'
+    " execute ':normal ' . l:cursor_line . 'G'
+  endfunction
+
+  function! l:prepare_outerdoc(path, count_line)
+    " TODO if ファイルが存在しない
+    call l:create_outerdoc(a:path)
+    call l:fill_in_blank_line(a:path, a:count_line)
+  endfunction
+
+  function! l:open_outerdoc_buffer()
+    belowright 50vnew
+  endfunction
+
   let l:count_line = line('$')
   let l:cursor_line = line('.')
-  setlocal cursorbind
-  echom bufwinnr(l:path)
-  belowright 50vnew
-  call junkfile#open_immediately(l:name)
-  let l:count_line_diff = l:count_line - line('$')
-  if l:count_line_diff > 0
-    execute ':normal $' . l:count_line_diff . 'o'
-  endif
-  execute ':normal ' . l:cursor_line . 'G'
-  setlocal cursorbind
-  setlocal nocursorline
-  setlocal nocursorcolumn
+  let l:outerdoc_name = l:get_outerdoc_name()
+
+  call l:setup_source_buffer()
+  call l:prepare_outerdoc(l:outerdoc_name)
+  call l:open_outerdoc_buffer(l:outerdoc_name)
+  call l:setup_outerdoc_buffer()
 endfunction
-" call s:mytest()
 "}}}
 
 " Plugins"{{{
