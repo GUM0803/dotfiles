@@ -73,11 +73,17 @@ function! s:outerdoc_open()
 
   function! l:setup_outerdoc_buffer()
     setlocal cursorbind
-    setlocal nocursorline
-    setlocal nocursorcolumn
+  endfunction
+
+  function! l:create_outerdoc_dir(path)
+    let l:outerdoc_dir = fnamemodify(a:path, ':h')
+    if !isdirectory(l:outerdoc_dir)
+      call mkdir(l:outerdoc_dir, 'p')
+    endif
   endfunction
 
   function! l:create_outerdoc(path)
+    call l:create_outerdoc_dir(a:path)
   endfunction
 
   function! l:fill_in_blank_line(path, count_line)
@@ -97,11 +103,11 @@ function! s:outerdoc_open()
 
   let l:count_line = line('$')
   let l:cursor_line = line('.')
-  let l:outerdoc_name = l:get_outerdoc_name()
+  let l:outerdoc_path = '~/.outerdoc/' . l:get_outerdoc_name()
 
   call l:setup_source_buffer()
-  call l:prepare_outerdoc(l:outerdoc_name)
-  call l:open_outerdoc_buffer(l:outerdoc_name)
+  call l:prepare_outerdoc(l:outerdoc_path)
+  call l:open_outerdoc_buffer(l:outerdoc_path)
   call l:setup_outerdoc_buffer()
 endfunction
 "}}}
