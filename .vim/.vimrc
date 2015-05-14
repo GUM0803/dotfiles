@@ -61,55 +61,55 @@ function! s:provide_tab_label()
   return l:label
 endfunction
 
+function! s:get_outerdoc_name()
+  let l:path = expand('%:p')
+  return substitute(l:path, '/\|:', '_', 'g') . '.md'
+endfunction
+
+function! s:setup_source_buffer()
+  setlocal cursorbind
+endfunction
+
+function! s:setup_outerdoc_buffer()
+  setlocal cursorbind
+endfunction
+
+function! s:create_outerdoc_dir(path)
+  let l:outerdoc_dir = fnamemodify(a:path, ':h')
+  if !isdirectory(l:outerdoc_dir)
+    call mkdir(l:outerdoc_dir, 'p')
+  endif
+endfunction
+
+function! s:fill_in_blank_line(path, count_line)
+  let l:blank_lines = map(range(a:count_line), '""')
+  call writefile(l:blank_lines, a:path)
+endfunction
+
+function! s:prepare_outerdoc(path, count_line)
+  if !filewritable(a:path)
+    call s:create_outerdoc_dir(a:path)
+    call s:fill_in_blank_line(a:path, a:count_line)
+  endif
+endfunction
+
+function! s:open_outerdoc_buffer(path, cursor_line)
+  belowright 50vnew `=a:path`
+  execute ':normal ' . a:cursor_line . 'G'
+endfunction
+
 function! s:outerdoc_open()
-  function! l:get_outerdoc_name()
-    let l:path = expand('%:p')
-    return substitute(l:path, '/\|:', '_', 'g') . '.md'
-  endfunction
-
-  function! l:setup_source_buffer()
-    setlocal cursorbind
-  endfunction
-
-  function! l:setup_outerdoc_buffer()
-    setlocal cursorbind
-  endfunction
-
-  function! l:create_outerdoc_dir(path)
-    let l:outerdoc_dir = fnamemodify(a:path, ':h')
-    if !isdirectory(l:outerdoc_dir)
-      call mkdir(l:outerdoc_dir, 'p')
-    endif
-  endfunction
-
-  function! l:create_outerdoc(path)
-    call l:create_outerdoc_dir(a:path)
-  endfunction
-
-  function! l:fill_in_blank_line(path, count_line)
-    " execute ':normal $' . l:count_line_diff . 'o'
-    " execute ':normal ' . l:cursor_line . 'G'
-  endfunction
-
-  function! l:prepare_outerdoc(path, count_line)
-    " TODO if ファイルが存在しない
-    call l:create_outerdoc(a:path)
-    call l:fill_in_blank_line(a:path, a:count_line)
-  endfunction
-
-  function! l:open_outerdoc_buffer()
-    belowright 50vnew
-  endfunction
-
   let l:count_line = line('$')
   let l:cursor_line = line('.')
-  let l:outerdoc_path = '~/.outerdoc/' . l:get_outerdoc_name()
+  let l:outerdoc_path = expand('~/.outerdoc/' . s:get_outerdoc_name())
 
-  call l:setup_source_buffer()
-  call l:prepare_outerdoc(l:outerdoc_path)
-  call l:open_outerdoc_buffer(l:outerdoc_path)
-  call l:setup_outerdoc_buffer()
+  call s:setup_source_buffer()
+  call s:prepare_outerdoc(l:outerdoc_path, l:count_line)
+  call s:open_outerdoc_buffer(l:outerdoc_path, l:cursor_line)
+  call s:setup_outerdoc_buffer()
 endfunction
+
+command! OuterDocOpen call s:outerdoc_open()
 "}}}
 
 " Plugins"{{{
