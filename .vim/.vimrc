@@ -269,6 +269,7 @@ endfunction
 NeoBundle "tyru/caw.vim.git"
 " }}}
 " Tagbar {{{
+let g:tagbar_left = 1
 NeoBundle 'majutsushi/tagbar'
 " }}}
 " Quick Highlight {{{
