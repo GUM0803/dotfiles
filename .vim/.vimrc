@@ -224,7 +224,7 @@ let g:lightline = {
       \   'active': {
       \     'left': [
       \       [ 'mode', 'paste' ],
-      \       [ 'readonly', 'absolutepath', 'tagbar', 'modified', 'anzu' ]
+      \       [ 'readonly', 'absolutepath', 'tagbar', 'anzu', 'modified' ]
       \     ],
       \     'right': [
       \       [ 'lineinfo', 'percent' ],
