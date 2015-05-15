@@ -259,7 +259,7 @@ let g:lightline = {
       \   'active': {
       \     'left': [
       \       [ 'mode', 'paste' ],
-      \       [ 'readonly', 'absolutepath', 'tagbar', 'anzu', 'modified' ]
+      \       [ 'readonly', 'pwd', 'absolutepath', 'tagbar', 'anzu', 'modified' ]
       \     ],
       \     'right': [
       \       [ 'lineinfo', 'percent' ],
@@ -274,6 +274,7 @@ let g:lightline = {
       \   },
       \   'component_function': {
       \     'anzu': 'anzu#search_status',
+      \     'pwd': 'getcwd',
       \   },
       \   'component_visible_condition': {
       \     'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
