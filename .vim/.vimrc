@@ -365,6 +365,9 @@ NeoBundle 'osyo-manga/vim-anzu'
 " Tern {{{
 " NeoBundleLazy 'marijnh/tern_for_vim'
 " NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
+" Unite Giti "{{{
+" NeoBundle 'kmnk/vim-unite-giti'
+"}}}
 " " }}}
 "}}}
 call neobundle#end()
