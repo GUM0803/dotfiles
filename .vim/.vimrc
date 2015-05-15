@@ -610,4 +610,7 @@ set foldmethod=marker
 " カラースキーム
 set background=dark
 colorscheme solarized
+
+" ファイル名補完
+set wildmode=list:longest
 "}}}
