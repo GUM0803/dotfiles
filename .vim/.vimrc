@@ -335,6 +335,9 @@ NeoBundle 'tacroe/unite-mark'
 let g:anzu_status_format = '(%i/%l)'
 NeoBundle 'osyo-manga/vim-anzu'
 "}}}
+" Codic "{{{
+NeoBundle 'koron/codic-vim'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
