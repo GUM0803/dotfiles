@@ -163,6 +163,7 @@ NeoBundle 'Shougo/VimProc.vim',
 " }}}
 " Vim Filer {{{
 let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
+let g:vimfiler_ignore_pattern      = '' " 非表示にするファイルのパターン
 NeoBundle 'Shougo/vimfiler.vim'
 " }}}
 " Color Scheme Solarized {{{
