@@ -614,5 +614,5 @@ set background=dark
 colorscheme solarized
 
 " ファイル名補完
-set wildmode=list:longest
+set wildmode=list:full
 "}}}
