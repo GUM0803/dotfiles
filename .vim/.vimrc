@@ -375,6 +375,9 @@ NeoBundle 'osyo-manga/vim-anzu'
 " Codic "{{{
 NeoBundle 'koron/codic-vim'
 "}}}
+" Colorizer "{{{
+NeoBundle 'lilydjwg/colorizer'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
