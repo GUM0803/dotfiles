@@ -390,6 +390,9 @@ NeoBundleLazy 'eagletmt/ghcmod-vim',
 NeoBundleLazy 'ujihisa/neco-ghc',
       \ { 'autoload' : { 'filetypes' : ['haskell'] } }
 "}}}
+" Rust "{{{
+NeoBundle 'rust-lang/rust.vim'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
