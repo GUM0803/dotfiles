@@ -378,6 +378,18 @@ NeoBundle 'koron/codic-vim'
 " Colorizer "{{{
 NeoBundle 'lilydjwg/colorizer'
 "}}}
+" 2hs "{{{
+NeoBundleLazy 'dag/vim2hs',
+      \ { 'autoload' : { 'filetypes' : ['haskell'] } }
+"}}}
+" Ghcmod "{{{
+NeoBundleLazy 'eagletmt/ghcmod-vim',
+      \ { 'autoload' : { 'filetypes' : ['haskell'] } }
+"}}}
+" Neco Ghc "{{{
+NeoBundleLazy 'ujihisa/neco-ghc',
+      \ { 'autoload' : { 'filetypes' : ['haskell'] } }
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
