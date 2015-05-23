@@ -1,12 +1,12 @@
+let s:is_win   = has('win32') || has('win64')
+let s:is_mingw = system('uname') =~? '^MINGW'
+let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
+let s:is_linux = !s:is_mac && has('unix')
+
 set encoding=UTF-8
 set fileencodings=utf-8,euc-jp,cp932
 " set termencoding=UTF-8
 scriptencoding utf-8
-
-let s:is_win   = has('win32') || has('win64')
-" let s:is_mingw = system('uname') =~? '^MINGW'
-let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
-let s:is_linux = !s:is_mac && has('unix')
 
 " Utility Functions"{{{
 function! s:warn(msg)
