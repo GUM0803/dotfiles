@@ -6,6 +6,9 @@ let s:is_linux = !s:is_mac && has('unix')
 set encoding=UTF-8
 set fileencodings=utf-8,euc-jp,cp932
 " set termencoding=UTF-8
+if s:is_win || s:is_mingw
+  " set termencoding=cp932
+endif
 scriptencoding utf-8
 
 " Utility Functions"{{{
