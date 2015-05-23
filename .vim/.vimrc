@@ -4,6 +4,7 @@ let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
 
 set encoding=UTF-8
+set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,cp932
 " set termencoding=UTF-8
 if s:is_win || s:is_mingw
