@@ -445,8 +445,6 @@ NeoBundleCheck
 " Key Binds"{{{
 let mapleader = ' '
 
-vnoremap <silent> <C-p> "0p<CR>
-
 nnoremap <esc> :noh<cr>
 
 nnoremap <silent> gl gt
