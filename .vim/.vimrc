@@ -397,6 +397,9 @@ NeoBundleLazy 'ujihisa/neco-ghc',
 " Rust "{{{
 NeoBundle 'rust-lang/rust.vim'
 "}}}
+" Operator Replace "{{{
+NeoBundle 'kana/vim-operator-replace'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
@@ -518,6 +521,8 @@ if executable('fcitx-remote')
   inoremap <esc> <esc>:CloseFcitx<cr>
   command! CloseFcitx :call system("fcitx-remote -c")
 endif
+
+nmap <Leader>p <Plug>(operator-replace)
 "}}}
 
 " Options"{{{
