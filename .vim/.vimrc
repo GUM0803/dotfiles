@@ -171,6 +171,9 @@ let g:vimfiler_ignore_pattern      = '' " 非表示にするファイルのパ�
 NeoBundle 'Shougo/vimfiler.vim'
 " }}}
 " Color Scheme Solarized {{{
+if !has('gui_running')
+  let g:solarized_termcolors=256
+endif
 NeoBundle 'altercation/vim-colors-solarized'
 " }}}
 " Color Scheme mustang {{{
@@ -633,6 +636,11 @@ set guioptions-=r
 
 " 折り畳み
 set foldmethod=marker
+
+" ターミナルの色数
+if !has('gui_running')
+  set t_Co=256
+endif
 
 " カラースキーム
 set background=dark
