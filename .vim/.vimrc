@@ -403,6 +403,9 @@ NeoBundle 'rust-lang/rust.vim'
 " Operator Replace "{{{
 NeoBundle 'kana/vim-operator-replace'
 "}}}
+" Dockerfile "{{{
+NeoBundle 'ekalinin/Dockerfile.vim'
+"}}}
 
 " Unused Plugins "{{{
 " Dynamic Window Manager {{{
