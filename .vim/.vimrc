@@ -464,8 +464,7 @@ nnoremap <silent> [unite]b :Unite buffer<cr>
 nnoremap <silent> [unite]m :Unite mark<cr>
 nnoremap <silent> [unite]y :Unite history/yank<cr>
 nnoremap <silent> [unite]B :Unite bookmark<cr>
-nnoremap <silent> [unite]q :Unite -tab -auto-preview quickfix<cr>
-nnoremap <silent> [unite]g :Unite -tab -auto-preview grep<cr>
+nnoremap <silent> [unite]q :Unite -tab -max-multi-lines=1 quickfix<cr>
 
 nmap <Leader>r <Plug>(quickrun)
 
