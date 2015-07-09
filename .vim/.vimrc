@@ -466,8 +466,12 @@ nnoremap 9<Leader> 9gt
 nnoremap 0<Leader> 10gt
 nnoremap <silent> gl gt
 nnoremap <silent> gh gT
+
+" ウィンドウ切り替え
 nnoremap <silent> gj <C-w>w
 nnoremap <silent> gk <C-w>W
+nnoremap <C-J> <C-w>w
+nnoremap <C-K> <C-w>W
 
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
