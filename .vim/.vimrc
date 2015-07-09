@@ -453,6 +453,17 @@ let mapleader = ' '
 
 nnoremap <esc> :noh<cr>
 
+" タブ切り替え
+nnoremap 1<Leader> 1gt
+nnoremap 2<Leader> 2gt
+nnoremap 3<Leader> 3gt
+nnoremap 4<Leader> 4gt
+nnoremap 5<Leader> 5gt
+nnoremap 6<Leader> 6gt
+nnoremap 7<Leader> 7gt
+nnoremap 8<Leader> 8gt
+nnoremap 9<Leader> 9gt
+nnoremap 0<Leader> 10gt
 nnoremap <silent> gl gt
 nnoremap <silent> gh gT
 nnoremap <silent> gj <C-w>w
