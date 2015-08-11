@@ -115,6 +115,12 @@ endfunction
 
 command! OuterDocOpen call s:outerdoc_open()
 
+function! s:change_buffer_name(name)
+  file `=a:name`
+endfunction
+
+command! -nargs=+ ChangeBufferName :call s:change_buffer_name(<f-args>)
+
 " Codic Complete "{{{
 " https://gist.github.com/sgur/4e1cc8e93798b8fe9621
 " http://sgur.tumblr.com/post/91906146884/codic-vim
