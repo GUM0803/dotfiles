@@ -158,7 +158,7 @@ endfunction
 "}}}
 
 " Plugins"{{{
-set runtimepath+=~/.vim/bundle/NeoBundle.vim/
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/NeoBundle.vim'
