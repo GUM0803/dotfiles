@@ -348,6 +348,7 @@ NeoBundleLazy 'digitaltoad/vim-jade',
 " Vim Json "{{{
 NeoBundleLazy 'elzr/vim-json',
       \ { 'autoload' : { 'filetypes' : ['json'] } }
+let g:vim_json_syntax_conceal = 0
 "}}}
 " Open Browser "{{{
 NeoBundleLazy 'tyru/open-browser.vim',
