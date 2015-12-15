@@ -250,6 +250,7 @@ let g:neocomplete#enable_fuzzy_completion         = 1
 NeoBundle 'Shougo/neocomplete.vim'
 " }}}
 " Neo Snippet {{{
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 " }}}
