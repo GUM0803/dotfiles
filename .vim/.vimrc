@@ -674,3 +674,21 @@ colorscheme solarized
 " ファイル名補完
 set wildmode=list:full
 "}}}
+
+function! s:php_lint()
+  echomsg 'test'
+  silent make
+  if len(getqflist()) != 1
+    copen
+  else
+    cclose
+  endif
+  :redraw! " 画面が崩れるのでリフレッシュする（ターミナル接続時限定？）
+endfunction
+
+augroup PHP
+  autocmd!
+  autocmd FileType php set makeprg=php\ -l\ %
+  " php -lの構文チェックでエラーがなければ「No syntax errors」の一行だけ出力される
+  autocmd BufWritePost *.php :call s:php_lint()
+augroup END
