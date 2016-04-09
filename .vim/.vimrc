@@ -37,11 +37,11 @@ function! s:show_info_line(msg)
   let l:winnr = bufwinnr(bufnr(l:bufname))
 
   if l:winnr == -1
-    :silent belowright 5new `=l:bufname`
+    silent belowright 5new `=l:bufname`
     call s:setup_tmp_buf()
     call setline('.', a:msg)
   else
-    :execute l:winnr . 'wincmd w'
+    execute l:winnr . 'wincmd w'
     call append('.', a:msg)
   endif
 
@@ -54,13 +54,13 @@ augroup ShowInfo
 augroup END
 
 function! s:setup_tmp_buf()
-  :setlocal buftype=nowrite
-  :setlocal noswapfile
-  :setlocal bufhidden=wipe
-  :setlocal nonumber
-  :setlocal nowrap
-  :setlocal nocursorline
-  :setlocal nocursorcolumn
+  setlocal buftype=nowrite
+  setlocal noswapfile
+  setlocal bufhidden=wipe
+  setlocal nonumber
+  setlocal nowrap
+  setlocal nocursorline
+  setlocal nocursorcolumn
 endfunction
 
 function! s:depend_cui_tool(cmd, ...)
