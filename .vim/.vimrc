@@ -204,302 +204,36 @@ endfunction
 "}}}
 
 " Plugins"{{{
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/NeoBundle.vim'
-" Vim Proc {{{
-NeoBundle 'Shougo/VimProc.vim',
-      \ { 'build' : {
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \   },
-      \ }
-" }}}
-" Vim Filer {{{
-let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
-let g:vimfiler_ignore_pattern      = '' " 非表示にするファイルのパターン
-NeoBundle 'Shougo/vimfiler.vim'
-" }}}
-" Color Scheme Solarized {{{
-if !has('gui_running')
-  let g:solarized_termcolors=256
+if &compatible
+  set nocompatible               " Be iMproved
 endif
-NeoBundle 'altercation/vim-colors-solarized'
-" }}}
-" Color Scheme mustang {{{
-NeoBundle 'croaker/mustang-vim'
-" }}}
-" Color Scheme jellybeans {{{
-NeoBundle 'nanotech/jellybeans.vim'
-" }}}
-" Color Scheme molokai {{{
-NeoBundle 'tomasr/molokai'
-" }}}
-" Unite {{{
-let g:unite_split_rule                 = 'botright' " 分割方向
-let g:unite_source_history_yank_enable = 1 " yank履歴の有効化
-NeoBundle 'Shougo/unite.vim'
-" }}}
-" Unite Color Scheme {{{
-NeoBundle 'ujihisa/unite-colorscheme'
-" }}}
-" Quick Fix {{{
-NeoBundle 'osyo-manga/unite-quickfix.git'
-" }}}
-" Vim Shell {{{
-NeoBundle 'Shougo/vimshell'
-" }}}
-" Quick Run {{{
-let g:quickrun_config = {
-      \   '_' : {
-      \     'runner' : 'vimproc',
-      \     'runner/vimproc/updatetime' : 50
-      \   },
-      \   'watchdogs_checker/_' : {
-      \     'outputter/quickfix/open_cmd' : '',
-      \   },
-      \ }
-NeoBundle 'thinca/vim-quickrun'
-" }}}
-" Shabadou {{{
-NeoBundle 'osyo-manga/shabadou.vim'
-" }}}
-" Watchdogs {{{
-let g:watchdogs_check_BufWritePost_enable = 1
-if s:depend_cui_tool('vint', 'pip install vim-vint')
-  let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
-  let g:quickrun_config['watchdogs_checker/vint']            = {}
-  let g:quickrun_config['watchdogs_checker/vint']['command'] = 'vint'
-  let g:quickrun_config['watchdogs_checker/vint']['exec']    = '%c %s'
-endif
-NeoBundle 'osyo-manga/vim-watchdogs'
-" call watchdogs#setup(g:quickrun_config)
-" " }}}
-" Quickfix Status {{{
-NeoBundle 'dannyob/quickfixstatus'
-" }}}
-" Hier {{{
-NeoBundle 'cohama/vim-hier'
-" }}}
-" Neo Complete {{{
-let g:neocomplete#enable_at_startup               = 1
-let g:neocomplete#auto_completion_start_length    = 3
-let g:neocomplete#enable_ignore_case              = 1
-let g:neocomplete#enable_smart_case               = 1
-let g:neocomplete#enable_camel_case               = 1
-let g:neocomplete#use_vimproc                     = 1
-let g:neocomplete#sources#buffer#cache_limit_size = 1000000
-let g:neocomplete#sources#tags#cache_limit_size   = 30000000
-let g:neocomplete#enable_fuzzy_completion         = 1
-NeoBundle 'Shougo/neocomplete.vim'
-" }}}
-" Neo Snippet {{{
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-" }}}
-" Junkfile {{{
-NeoBundle 'Shougo/junkfile.vim'
-" }}}
-" Easymotion {{{
-let g:EasyMotion_do_mapping       = 0 " デフォルトのマッピングを削除
-let g:EasyMotion_smartcase        = 1 " 大文字小文字の違いを無視
-let g:EasyMotion_use_smartsign_jp = 1 " キー位置の同じ文字は一致とみなす
-let g:EasyMotion_use_upper        = 1 " labelの文字を大文字にする
-let g:EasyMotion_keys             = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
-NeoBundle 'Lokaltog/vim-easymotion'
-" }}}
-" Easy Align {{{
-NeoBundle 'junegunn/vim-easy-align'
-" }}}
-" Light Line {{{
-let g:lightline = {
-      \   'colorscheme': 'wombat',
-      \   'active': {
-      \     'left': [
-      \       [ 'mode', 'paste' ],
-      \       [ 'readonly', 'pwd', 'absolutepath', 'tagbar', 'anzu', 'modified' ]
-      \     ],
-      \     'right': [
-      \       [ 'lineinfo', 'percent' ],
-      \       [ 'fugitive' ],
-      \       [ 'fileformat', 'fileencoding', 'filetype' ]
-      \     ]
-      \   },
-      \   'component': {
-      \     'readonly': '%{&readonly?"✖":""}',
-      \     'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-      \     'tagbar': '%{tagbar#currenttag("%s", "")}',
-      \   },
-      \   'component_function': {
-      \     'anzu': 'anzu#search_status',
-      \     'pwd': 'getcwd',
-      \   },
-      \   'component_visible_condition': {
-      \     'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \   },
-      \ }
-NeoBundle 'itchyny/lightline.vim'
-" }}}
-" Fugitive {{{
-NeoBundle 'tpope/vim-fugitive'
-" }}}
-" Agit {{{
-NeoBundle 'cohama/agit.vim'
-" }}}
-" Multiple Cursors {{{
-NeoBundle 'terryma/vim-multiple-cursors'
-function! Multiple_cursors_before()
-  if exists(':NeoCompleteLock')==2
-    exe 'NeoCompleteLock'
-  endif
-endfunction
-function! Multiple_cursors_after()
-  if exists(':NeoCompleteUnlock')==2
-    exe 'NeoCompleteUnlock'
-  endif
-endfunction
-" }}}
-" Caw {{{
-NeoBundle "tyru/caw.vim.git"
-" }}}
-" Tagbar {{{
-let g:tagbar_left = 1
-NeoBundle 'majutsushi/tagbar'
-" }}}
-" Quick Highlight {{{
-NeoBundle "t9md/vim-quickhl"
-" }}}
-" Operator Surround {{{
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'rhysd/vim-operator-surround',
-      \ { 'depends' : 'kana/vim-operator-user' }
-" }}}
-" Over {{{
-NeoBundle 'osyo-manga/vim-over'
-" }}}
-" Asterisk {{{
-let g:asterisk#keeppos = 1
-NeoBundle 'haya14busa/vim-asterisk'
-" }}}
-" Coffee Script {{{
-NeoBundleLazy 'kchmck/vim-coffee-script',
-      \ { 'autoload' : { 'filetypes' : ['coffee'] } }
-" }}}
-" Jade {{{
-NeoBundleLazy 'digitaltoad/vim-jade',
-      \ { 'autoload' : { 'filetypes' : ['jade'] } }
-" }}}
-" Vim Json "{{{
-NeoBundleLazy 'elzr/vim-json',
-      \ { 'autoload' : { 'filetypes' : ['json'] } }
-let g:vim_json_syntax_conceal = 0
-"}}}
-" Open Browser "{{{
-NeoBundleLazy 'tyru/open-browser.vim',
-      \ { 'autoload' : { 'filetypes' : ['markdown'] } }
-"}}}
-" Previm "{{{
-let g:previm_disable_default_css = 1
-let g:previm_custom_css_path     = expand('~/.vim/bundle/github-markdown-css/github-markdown.css')
-NeoBundleLazy 'kannokanno/previm',
-      \ { 'autoload' : { 'filetypes' : ['markdown'] } }
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
-"}}}
-" Github Markdown Css "{{{
-NeoBundleFetch 'tigmium/github-markdown-css'
-"}}}
-" Indent Line "{{{
-NeoBundle 'Yggdroot/indentLine'
-"}}}
-" Memo List "{{{
-NeoBundle 'glidenote/memolist.vim'
-"}}}
-" Git Gutter "{{{
-NeoBundle 'airblade/vim-gitgutter'
-"}}}
-" Signature "{{{
-NeoBundle 'kshenoy/vim-signature'
-"}}}
-" Unite Mark {{{
-NeoBundle 'tacroe/unite-mark'
-" " }}}
-" Anzu "{{{
-let g:anzu_status_format = '(%i/%l)'
-NeoBundle 'osyo-manga/vim-anzu'
-"}}}
-" Codic "{{{
-NeoBundle 'koron/codic-vim'
-"}}}
-" Colorizer "{{{
-NeoBundle 'lilydjwg/colorizer'
-"}}}
-" 2hs "{{{
-NeoBundleLazy 'dag/vim2hs',
-      \ { 'autoload' : { 'filetypes' : ['haskell'] } }
-"}}}
-" Ghcmod "{{{
-NeoBundleLazy 'eagletmt/ghcmod-vim',
-      \ { 'autoload' : { 'filetypes' : ['haskell'] } }
-"}}}
-" Neco Ghc "{{{
-NeoBundleLazy 'ujihisa/neco-ghc',
-      \ { 'autoload' : { 'filetypes' : ['haskell'] } }
-"}}}
-" Rust "{{{
-NeoBundle 'rust-lang/rust.vim'
-"}}}
-" Operator Replace "{{{
-NeoBundle 'kana/vim-operator-replace'
-"}}}
-" Dockerfile "{{{
-NeoBundle 'ekalinin/Dockerfile.vim'
-"}}}
 
-" Unused Plugins "{{{
-" Dynamic Window Manager {{{
-" NeoBundle 'spolu/dwm.vim'
-" " }}}
-" Tabman {{{
-" NeoBundle 'kien/tabman.vim'
-" " }}}
-" Thumbnail {{{
-" NeoBundle 'itchyny/thumbnail.vim'
-" " }}}
-" Emmet {{{
-" NeoBundle 'mattn/emmet-vim'
-" " }}}
-" Quick Fix Sign {{{
-" let g:qfsigns#AutoJump = 1
-" NeoBundle 'KazuakiM/vim-qfsigns'
-" " }}}
-" Auto Ctags {{{
-" let g:auto_ctags                = 1
-" let g:auto_ctags_directory_list = ['.git', '.svn']
-" NeoBundle 'soramugi/auto-ctags.vim'
-" " }}}
-" Scss {{{
-" NeoBundle 'cakebaker/scss-syntax.vim'
-" " }}}
-" Sass {{{
-" NeoBundle 'AtsushiM/sass-compile.vim'
-" " }}}
-" Tern {{{
-" NeoBundleLazy 'marijnh/tern_for_vim'
-" NeoBundleLazy 'othree/tern_for_vim_coffee', {'autoload': {'on_source': 'tern_for_vim'}}
-" Unite Giti "{{{
-" NeoBundle 'kmnk/vim-unite-giti'
-"}}}
-" " }}}
-"}}}
-call neobundle#end()
+" Required:
+set runtimepath^=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin(expand('~/.cache/dein'))
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+let s:toml_path = '~/dotfiles/dein.toml'
+let s:toml_lazy_path = '~/dotfiles/deinlazy.toml'
+
+call dein#load_toml(s:toml_path, {'lazy': 0})
+call dein#load_toml(s:toml_lazy_path, {'lazy' : 1})
+
+" Required:
+call dein#end()
+
+" Required:
 filetype plugin indent on
-NeoBundleCheck
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
 "}}}
 
 " Key Binds"{{{

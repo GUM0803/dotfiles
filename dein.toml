@@ -1,0 +1,231 @@
+[[plugins]] # Vim Proc
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]] # Vim Filer
+repo = 'Shougo/vimfiler.vim'
+hook_add = '''
+  let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
+  let g:vimfiler_ignore_pattern      = '' " 非表示にするファイルのパターン
+'''
+
+[[plugins]] # Color Scheme Solarized
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]] # Color Scheme mustang
+repo = 'croaker/mustang-vim'
+
+[[plugins]] # Color Scheme jellybeans
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]] # Color Scheme molokai
+repo = 'tomasr/molokai'
+
+[[plugins]] # Unite
+repo = 'Shougo/unite.vim'
+hook_add = '''
+  let g:unite_split_rule                 = 'botright' " 分割方向
+  let g:unite_source_history_yank_enable = 1 " yank履歴の有効化
+'''
+
+[[plugins]] # Unite Color Scheme
+repo = 'ujihisa/unite-colorscheme'
+
+[[plugins]] # Quick Fix
+repo = 'osyo-manga/unite-quickfix.git'
+
+[[plugins]] # Vim Shell
+repo = 'Shougo/vimshell'
+
+[[plugins]] # Quick Run
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+  let g:quickrun_config = {
+        \   '_' : {
+        \     'runner' : 'vimproc',
+        \     'runner/vimproc/updatetime' : 50
+        \   },
+        \   'watchdogs_checker/_' : {
+        \     'outputter/quickfix/open_cmd' : '',
+        \   },
+        \ }
+'''
+
+[[plugins]] # Shabadou
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]] # Watchdogs
+repo = 'osyo-manga/vim-watchdogs'
+hook_add = '''
+  let g:watchdogs_check_BufWritePost_enable = 1
+  " if s:depend_cui_tool('vint', 'pip install vim-vint')
+  "   let g:quickrun_config['vim/watchdogs_checker']             = {'type': 'watchdogs_checker/vint'}
+  "   let g:quickrun_config['watchdogs_checker/vint']            = {}
+  "   let g:quickrun_config['watchdogs_checker/vint']['command'] = 'vint'
+  "   let g:quickrun_config['watchdogs_checker/vint']['exec']    = '%c %s'
+  " endif
+'''
+
+[[plugins]] # Quickfix Status
+repo = 'dannyob/quickfixstatus'
+
+[[plugins]] # Hier
+repo = 'cohama/vim-hier'
+
+[[plugins]] # Neo Complete
+repo = 'Shougo/neocomplete.vim'
+hook_add = '''
+  let g:neocomplete#enable_at_startup               = 1
+  let g:neocomplete#auto_completion_start_length    = 3
+  let g:neocomplete#enable_ignore_case              = 1
+  let g:neocomplete#enable_smart_case               = 1
+  let g:neocomplete#enable_camel_case               = 1
+  let g:neocomplete#use_vimproc                     = 1
+  let g:neocomplete#sources#buffer#cache_limit_size = 1000000
+  let g:neocomplete#sources#tags#cache_limit_size   = 30000000
+  let g:neocomplete#enable_fuzzy_completion         = 1
+'''
+
+[[plugins]] # Neo Snippet
+repo = 'Shougo/neosnippet'
+
+[[plugins]] # Neo Snippet Snippets
+repo = 'Shougo/neosnippet-snippets'
+hook_add = '''
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/'
+'''
+
+[[plugins]] # Junkfile
+repo = 'Shougo/junkfile.vim'
+
+[[plugins]] # Easymotion
+repo = 'Lokaltog/vim-easymotion'
+hook_add = '''
+  let g:EasyMotion_do_mapping       = 0 " デフォルトのマッピングを削除
+  let g:EasyMotion_smartcase        = 1 " 大文字小文字の違いを無視
+  let g:EasyMotion_use_smartsign_jp = 1 " キー位置の同じ文字は一致とみなす
+  let g:EasyMotion_use_upper        = 1 " labelの文字を大文字にする
+  let g:EasyMotion_keys             = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
+'''
+
+[[plugins]] # Easy Align
+repo = 'junegunn/vim-easy-align'
+
+[[plugins]] # Light Line
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+        \   'colorscheme': 'wombat',
+        \   'active': {
+        \     'left': [
+        \       [ 'mode', 'paste' ],
+        \       [ 'readonly', 'pwd', 'absolutepath', 'tagbar', 'anzu', 'modified' ]
+        \     ],
+        \     'right': [
+        \       [ 'lineinfo', 'percent' ],
+        \       [ 'fugitive' ],
+        \       [ 'fileformat', 'fileencoding', 'filetype' ]
+        \     ]
+        \   },
+        \   'component': {
+        \     'readonly': '%{&readonly?"✖":""}',
+        \     'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+        \     'tagbar': '%{tagbar#currenttag("%s", "")}',
+        \   },
+        \   'component_function': {
+        \     'anzu': 'anzu#search_status',
+        \     'pwd': 'getcwd',
+        \   },
+        \   'component_visible_condition': {
+        \     'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+        \   },
+        \ }
+'''
+
+[[plugins]] # Fugitive
+repo = 'tpope/vim-fugitive'
+
+[[plugins]] # Agit
+repo = 'cohama/agit.vim'
+
+[[plugins]] # Multiple Cursors
+repo = 'terryma/vim-multiple-cursors'
+hook_add = '''
+  function! Multiple_cursors_before()
+    if exists(':NeoCompleteLock')==2
+      exe 'NeoCompleteLock'
+    endif
+  endfunction
+  function! Multiple_cursors_after()
+    if exists(':NeoCompleteUnlock')==2
+      exe 'NeoCompleteUnlock'
+    endif
+  endfunction
+'''
+
+[[plugins]] # Caw
+repo = "tyru/caw.vim.git"
+
+[[plugins]] # Tagbar
+repo = 'majutsushi/tagbar'
+hook_add = '''
+  let g:tagbar_left = 1
+'''
+
+[[plugins]] # Quick Highlight
+repo = "t9md/vim-quickhl"
+
+[[plugins]] # Operator Surround
+repo = 'kana/vim-operator-user'
+
+[[plugins]] # Operator Surround
+repo = 'rhysd/vim-operator-surround'
+depends = 'kana/vim-operator-user'
+
+[[plugins]] # Over
+repo = 'osyo-manga/vim-over'
+
+[[plugins]] # Asterisk
+repo = 'haya14busa/vim-asterisk'
+hook_add = '''
+  let g:asterisk#keeppos = 1
+'''
+
+[[plugins]] # Github Markdown Css 
+repo = 'tigmium/github-markdown-css'
+rtp = ''
+
+[[plugins]] # Indent Line 
+repo = 'Yggdroot/indentLine'
+
+[[plugins]] # Memo List 
+repo = 'glidenote/memolist.vim'
+
+[[plugins]] # Git Gutter 
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]] # Signature 
+repo = 'kshenoy/vim-signature'
+
+[[plugins]] # Unite Mark
+repo = 'tacroe/unite-mark'
+
+[[plugins]] # Anzu 
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+  let g:anzu_status_format = '(%i/%l)'
+'''
+
+[[plugins]] # Codic 
+repo = 'koron/codic-vim'
+
+[[plugins]] # Colorizer 
+repo = 'lilydjwg/colorizer'
+
+[[plugins]] # Rust 
+repo = 'rust-lang/rust.vim'
+
+[[plugins]] # Operator Replace 
+repo = 'kana/vim-operator-replace'
+
+[[plugins]] # Dockerfile 
+repo = 'ekalinin/Dockerfile.vim'

@@ -1,0 +1,42 @@
+[[plugins]] # Coffee Script
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+[[plugins]] # Jade
+repo = 'digitaltoad/vim-jade'
+on_ft = 'jade'
+
+[[plugins]] # Vim Json 
+repo = 'elzr/vim-json'
+on_ft = 'json'
+hook_add = '''
+  let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]] # Open Browser 
+repo = 'tyru/open-browser.vim'
+on_ft = 'markdown'
+
+[[plugins]] # Previm 
+repo = 'kannokanno/previm'
+on_ft = 'markdown'
+hook_add = '''
+  let g:previm_disable_default_css = 1
+  let g:previm_custom_css_path     = expand('~/.vim/bundle/github-markdown-css/github-markdown.css')
+  augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+  augroup END
+'''
+
+[[plugins]] # 2hs 
+repo = 'dag/vim2hs'
+on_ft = 'haskell'
+
+[[plugins]] # Ghcmod 
+repo = 'eagletmt/ghcmod-vim'
+on_ft = 'haskell'
+
+[[plugins]] # Neco Ghc 
+repo = 'ujihisa/neco-ghc'
+on_ft = 'haskell'
