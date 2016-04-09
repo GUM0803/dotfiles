@@ -10,6 +10,9 @@ hook_add = '''
 
 [[plugins]] # Color Scheme Solarized
 repo = 'altercation/vim-colors-solarized'
+hook_add = '''
+  let g:solarized_termcolors=256
+'''
 
 [[plugins]] # Color Scheme mustang
 repo = 'croaker/mustang-vim'
