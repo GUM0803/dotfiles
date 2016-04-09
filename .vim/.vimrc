@@ -17,12 +17,58 @@ function! s:warn(msg)
   echohl WarningMsg | echo a:msg | echohl None
 endfunction
 
+" Vim起動時に表示するメッセージ
+" vimrc内でバッファを作成すると確認メッセージが抑制できなかったため
+" 起動イベントをフックして表示する
+let s:informations = []
+
+function! s:info(msg)
+  call add(s:informations, a:msg)
+endfunction
+
+function! s:show_info()
+  while len(s:informations) > 0
+    call s:show_info_line(remove(s:informations, 0))
+  endwhile
+endfunction
+
+function! s:show_info_line(msg)
+  let l:bufname = 'information'
+  let l:winnr = bufwinnr(bufnr(l:bufname))
+
+  if l:winnr == -1
+    :silent belowright 5new `=l:bufname`
+    call s:setup_tmp_buf()
+    call setline('.', a:msg)
+  else
+    :execute l:winnr . 'wincmd w'
+    call append('.', a:msg)
+  endif
+
+  let s:infomations = []
+endfunction
+
+augroup ShowInfo
+  au!
+  autocmd VimEnter * call s:show_info()
+augroup END
+
+function! s:setup_tmp_buf()
+  :setlocal buftype=nowrite
+  :setlocal noswapfile
+  :setlocal bufhidden=wipe
+  :setlocal nonumber
+  :setlocal nowrap
+  :setlocal nocursorline
+  :setlocal nocursorcolumn
+endfunction
+
 function! s:depend_cui_tool(cmd, ...)
   let l:able = executable(a:cmd)
   if !l:able
-    call s:warn('コマンドラインツール「' . a:cmd . '」が見つかりません')
+    call s:info('コマンドラインツール「' . a:cmd . '」が見つかりません')
     if exists('a:1')
-      call s:warn(a:1)
+      call s:info(a:1)
     endif
   endif
   return l:able
@@ -115,11 +161,11 @@ endfunction
 
 command! OuterDocOpen call s:outerdoc_open()
 
-function! s:change_buffer_name(name)
+function! s:ch_buf_name(name)
   file `=a:name`
 endfunction
 
-command! -nargs=+ ChangeBufferName :call s:change_buffer_name(<f-args>)
+command! -nargs=+ ChangeBufferName :call s:ch_buf_name(<f-args>)
 
 " Codic Complete "{{{
 " https://gist.github.com/sgur/4e1cc8e93798b8fe9621
