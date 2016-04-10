@@ -463,7 +463,9 @@ endif
 
 " カラースキーム
 set background=dark
-colorscheme solarized
+if dein#tap('vim-colors-solarized')
+  colorscheme solarized
+endif
 
 " ファイル名補完
 set wildmode=list:full
