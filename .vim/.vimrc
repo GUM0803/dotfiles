@@ -231,9 +231,13 @@ call dein#end()
 filetype plugin indent on
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install(['vimproc.vim'])
+  call dein#install('vimproc.vim')
+endif
+
+if dein#check_install()
+  call dein#install()
+endif
 "}}}
 
 " Key Binds"{{{
