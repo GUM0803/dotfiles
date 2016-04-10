@@ -77,6 +77,7 @@ repo = 'cohama/vim-hier'
 
 [[plugins]] # Neo Complete
 repo = 'Shougo/neocomplete.vim'
+if = 'has("lua")'
 hook_add = '''
   let g:neocomplete#enable_at_startup               = 1
   let g:neocomplete#auto_completion_start_length    = 3
