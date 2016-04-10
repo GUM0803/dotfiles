@@ -40,3 +40,7 @@ on_ft = 'haskell'
 [[plugins]] # Neco Ghc 
 repo = 'ujihisa/neco-ghc'
 on_ft = 'haskell'
+
+[[plugins]] # Vim Toml
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
