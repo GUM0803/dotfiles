@@ -27,25 +27,17 @@ function! s:info(msg)
 endfunction
 
 function! s:show_info()
+  let l:has_info = len(s:informations)
   while len(s:informations) > 0
     call s:show_info_line(remove(s:informations, 0))
   endwhile
+  if l:has_info != 0
+    call s:warn('メッセージがあります。"message"コマンドで確認してください。')
+  endif
 endfunction
 
 function! s:show_info_line(msg)
-  let l:bufname = 'information'
-  let l:winnr = bufwinnr(bufnr(l:bufname))
-
-  if l:winnr == -1
-    silent belowright 5new `=l:bufname`
-    call s:setup_tmp_buf()
-    call setline('.', a:msg)
-  else
-    execute l:winnr . 'wincmd w'
-    call append('.', a:msg)
-  endif
-
-  let s:infomations = []
+  echomsg string(a:msg)
 endfunction
 
 augroup ShowInfo
