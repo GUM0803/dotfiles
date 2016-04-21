@@ -317,8 +317,7 @@ nmap N N<Plug>(anzu-update-search-status)
 map * <Plug>(asterisk-z*)<Plug>(anzu-update-search-status)
 
 if !has('gui_running')
-  imap <F11> <nop>
-  set pastetoggle=<F11>
+  set pastetoggle=<F12>
 
   augroup DisablePaste
     autocmd!
