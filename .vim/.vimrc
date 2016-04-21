@@ -420,7 +420,7 @@ set nowrap
 set showmatch
 
 " タブ・インデント
-set expandtab " タブをスペースに変換しない
+set expandtab " タブをスペースに変換する
 set tabstop=2 " タブをスペース何個で表示するか
 set shiftwidth=2 " >>などで挿入される量
 set softtabstop=0 " タブを押した時の挿入量 0の場合tabstopの値になる。
@@ -461,6 +461,19 @@ endif
 
 " ファイル名補完
 set wildmode=list:full
+
+" .vimrc.local読み込み
+augroup vimrc-local
+  autocmd!
+  autocmd BufNewFile,BufReadPost * call s:vimrc_local(expand('<afile>:p:h'))
+augroup END
+
+function! s:vimrc_local(loc)
+  let files = findfile('.vimrc.local', escape(a:loc, ' ') . ';', -1)
+  for i in reverse(filter(files, 'filereadable(v:val)'))
+    source `=i`
+  endfor
+endfunction
 "}}}
 
 function! s:php_lint()
