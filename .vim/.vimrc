@@ -259,11 +259,12 @@ nnoremap <C-K> <C-w>W
 
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
-nnoremap <silent> [unite]b :Unite buffer<cr>
 nnoremap <silent> [unite]m :Unite mark<cr>
 nnoremap <silent> [unite]y :Unite history/yank<cr>
 nnoremap <silent> [unite]B :Unite bookmark<cr>
 nnoremap <silent> [unite]q :Unite -tab -max-multi-lines=1 quickfix<cr>
+
+nnoremap <silent> <C-_> :Unite buffer -start-insert<cr>
 
 nmap <Leader>r <Plug>(quickrun)
 
