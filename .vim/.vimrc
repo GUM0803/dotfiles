@@ -462,6 +462,9 @@ endif
 " ファイル名補完
 set wildmode=list:full
 
+" ファイル/ディレクトリ補完で無視されるファイルパターン
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png
+
 " .vimrc.local読み込み
 augroup vimrc-local
   autocmd!

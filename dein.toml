@@ -265,3 +265,6 @@ repo = 'ekalinin/Dockerfile.vim'
 
 [[plugins]] # ctrlp
 repo = 'ctrlpvim/ctrlp.vim'
+hook_add = '''
+  let g:ctrlp_custom_ignore = '\v[\/](node_modules|vender|build|dist)$'
+'''
