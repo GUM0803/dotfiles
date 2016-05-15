@@ -424,7 +424,7 @@ set expandtab " タブをスペースに変換する
 set tabstop=2 " タブをスペース何個で表示するか
 set shiftwidth=2 " >>などで挿入される量
 set softtabstop=0 " タブを押した時の挿入量 0の場合tabstopの値になる。
-" set autoindent
+set autoindent
 
 " タブ、空白、改行の可視化
 set list
