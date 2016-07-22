@@ -266,5 +266,8 @@ repo = 'ekalinin/Dockerfile.vim'
 [[plugins]] # ctrlp
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
-  let g:ctrlp_custom_ignore = '\v[\/](node_modules|vender|build|dist)$'
+  let g:ctrlp_custom_ignore = '\v[\/](node_modules|vender|build|dist|public)$'
 '''
+
+[[plugins]] # UniteGrepVcs
+repo = 'lambdalisue/unite-grep-vcs'
