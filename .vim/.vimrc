@@ -1,4 +1,9 @@
 let s:is_win   = has('win32') || has('win64')
+
+if s:is_win
+  set shell=cmd
+endif
+
 let s:is_mingw = system('uname') =~? '^MINGW'
 let s:is_mac   = has('mac') || system('uname') =~? '^darwin'
 let s:is_linux = !s:is_mac && has('unix')
@@ -352,7 +357,7 @@ endif
 
 " フォント
 if s:is_win
-  set guifont=Consolas:h11:cANSI
+  " set guifont=Consolas:h11:cANSI
 endif
 set ambiwidth=double
 " set antialias
@@ -393,8 +398,8 @@ set noundofile
 
 " 行数・列数
 if s:is_win
-  set lines=60
-  set columns=110
+  " set lines=60
+  " set columns=110
 endif
 
 " マウス
@@ -455,9 +460,13 @@ if !has('gui_running')
 endif
 
 " カラースキーム
-set background=dark
-if dein#tap('vim-colors-solarized')
-  colorscheme solarized
+if s:is_win
+  colorscheme default
+else
+  set background=dark
+  if dein#tap('vim-colors-solarized')
+    colorscheme solarized
+  endif
 endif
 
 " ファイル名補完
