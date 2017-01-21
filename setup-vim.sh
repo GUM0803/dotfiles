@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install -y curl vim gcc make &&\
+sudo apt-get install -y curl vim-gnome gcc make &&\
 cd ~/dotfiles &&\
 cp .vimrc ~/ &&\
 cd ~/.cache &&\
