@@ -151,7 +151,7 @@ hook_add = '''
         \   'active': {
         \     'left': [
         \       [ 'mode', 'paste' ],
-        \       [ 'readonly', 'pwd', 'absolutepath', 'tagbar', 'anzu', 'modified' ]
+        \       [ 'readonly', 'pwd', 'absolutepath', 'anzu', 'modified' ]
         \     ],
         \     'right': [
         \       [ 'lineinfo', 'percent' ],
@@ -162,7 +162,6 @@ hook_add = '''
         \   'component': {
         \     'readonly': '%{&readonly?"✖":""}',
         \     'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-        \     'tagbar': '%{tagbar#currenttag("%s", "")}',
         \   },
         \   'component_function': {
         \     'anzu': 'anzu#search_status',
@@ -197,12 +196,6 @@ hook_add = '''
 
 [[plugins]] # Caw
 repo = "tyru/caw.vim.git"
-
-[[plugins]] # Tagbar
-repo = 'majutsushi/tagbar'
-hook_add = '''
-  let g:tagbar_left = 1
-'''
 
 [[plugins]] # Quick Highlight
 repo = "t9md/vim-quickhl"
@@ -271,3 +264,7 @@ hook_add = '''
 
 [[plugins]] # UniteGrepVcs
 repo = 'lambdalisue/unite-grep-vcs'
+
+# Unite Outline
+if = "executable('ctags')"
+repo = 'Shougo/unite-outline'

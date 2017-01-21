@@ -269,12 +269,11 @@ nnoremap <silent> [unite]y :Unite history/yank<cr>
 nnoremap <silent> [unite]B :Unite bookmark<cr>
 nnoremap <silent> [unite]q :Unite -tab -max-multi-lines=1 quickfix<cr>
 nnoremap <silent> [unite]g :Unite grep/git -no-quit -tab -buffer-name=grep-git -default-action=tabopen<cr>
+nnoremap <silent> <C-f> :Unite -start-insert outline<cr>
 
 nnoremap <silent> <C-_> :Unite buffer -start-insert<cr>
 
 nmap <Leader>r <Plug>(quickrun)
-
-nmap <Leader>o :TagbarToggle<cr>
 
 nmap s         <Plug>(easymotion-s2)
 vmap s         <Plug>(easymotion-s2)
