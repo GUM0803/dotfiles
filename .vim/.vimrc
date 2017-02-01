@@ -240,7 +240,11 @@ endif
 " Key Binds"{{{
 let mapleader = ' '
 
+noremap <C-x><C-x> :tabnew $HOME/.vimrc<CR>
+
 nnoremap <esc> :noh<cr>
+
+imap <S-Enter> <ESC>
 
 " タブ切り替え
 nnoremap 1<Leader> 1gt
@@ -252,7 +256,6 @@ nnoremap 6<Leader> 6gt
 nnoremap 7<Leader> 7gt
 nnoremap 8<Leader> 8gt
 nnoremap 9<Leader> 9gt
-nnoremap 0<Leader> 10gt
 nnoremap <silent> gl gt
 nnoremap <silent> gh gT
 
@@ -270,7 +273,6 @@ nnoremap <silent> [unite]B :Unite bookmark<cr>
 nnoremap <silent> [unite]q :Unite -tab -max-multi-lines=1 quickfix<cr>
 nnoremap <silent> [unite]g :Unite grep/git -no-quit -tab -buffer-name=grep-git -default-action=tabopen<cr>
 nnoremap <silent> <C-f> :Unite -start-insert outline<cr>
-
 nnoremap <silent> <C-_> :Unite buffer -start-insert<cr>
 
 nmap <Leader>r <Plug>(quickrun)
