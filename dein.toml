@@ -265,6 +265,9 @@ hook_add = '''
 [[plugins]] # UniteGrepVcs
 repo = 'lambdalisue/unite-grep-vcs'
 
-# Unite Outline
+[[plugins]] # Unite Outline
 if = "executable('ctags')"
 repo = 'Shougo/unite-outline'
+
+[[plugins]] # Quick Fix Replace
+repo = 'thinca/vim-qfreplace'
