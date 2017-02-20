@@ -101,3 +101,11 @@ hook_add = '''
   " この設定の場合は vimproc.vim に依存しない
   " let g:marching_backend = "sync_clang_command"
 '''
+
+[[plugins]]
+repo = 'violetyk/neocomplete-php.vim'
+on_ft = 'php'
+if = "executable('svn')"
+hook_add = '''
+  let g:neocomplete_php_locale = 'ja'
+'''
