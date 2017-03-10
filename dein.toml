@@ -260,6 +260,7 @@ repo = 'ekalinin/Dockerfile.vim'
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
   let g:ctrlp_custom_ignore = '\v[\/](node_modules|vender|build|dist|public)$'
+  let g:ctrlp_open_new_file = 't'
 '''
 
 [[plugins]] # UniteGrepVcs
@@ -271,3 +272,17 @@ repo = 'Shougo/unite-outline'
 
 [[plugins]] # Quick Fix Replace
 repo = 'thinca/vim-qfreplace'
+
+[[plugins]] # Unite tag
+if = "executable('ctags')"
+repo = 'tsukkee/unite-tag'
+
+[[plugins]] # Vim-tags
+if = "executable('ctags')"
+repo = 'szw/vim-tags'
+hook_add = '''
+  autocmd BufEnter *
+  \   if empty(&buftype)
+  \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+  \|  endif
+'''
