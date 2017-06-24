@@ -109,3 +109,7 @@ if = "executable('svn')"
 hook_add = '''
   let g:neocomplete_php_locale = 'ja'
 '''
+
+[[plugins]] # Rust 
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'

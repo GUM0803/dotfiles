@@ -2,27 +2,27 @@
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
-[[plugins]] # Vim Filer
-repo = 'Shougo/vimfiler.vim'
-hook_add = '''
-  let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
-  let g:vimfiler_ignore_pattern      = '' " 非表示にするファイルのパターン
-'''
+# [[plugins]] # Vim Filer
+# repo = 'Shougo/vimfiler.vim'
+# hook_add = '''
+#   let g:vimfiler_as_default_explorer = 1 " デフォルトのファイラとして設定
+#   let g:vimfiler_ignore_pattern      = '' " 非表示にするファイルのパターン
+# '''
 
-[[plugins]] # Color Scheme Solarized
-repo = 'altercation/vim-colors-solarized'
-hook_add = '''
-  let g:solarized_termcolors=256
-'''
+# [[plugins]] # Color Scheme Solarized
+# repo = 'altercation/vim-colors-solarized'
+# hook_add = '''
+#   let g:solarized_termcolors=256
+# '''
 
-[[plugins]] # Color Scheme mustang
-repo = 'croaker/mustang-vim'
+# [[plugins]] # Color Scheme mustang
+# repo = 'croaker/mustang-vim'
 
-[[plugins]] # Color Scheme jellybeans
-repo = 'nanotech/jellybeans.vim'
+# [[plugins]] # Color Scheme jellybeans
+# repo = 'nanotech/jellybeans.vim'
 
-[[plugins]] # Color Scheme molokai
-repo = 'tomasr/molokai'
+# [[plugins]] # Color Scheme molokai
+# repo = 'tomasr/molokai'
 
 [[plugins]] # Unite
 repo = 'Shougo/unite.vim'
@@ -197,8 +197,8 @@ hook_add = '''
 [[plugins]] # Caw
 repo = "tyru/caw.vim.git"
 
-[[plugins]] # Quick Highlight
-repo = "t9md/vim-quickhl"
+# [[plugins]] # Quick Highlight
+# repo = "t9md/vim-quickhl"
 
 [[plugins]] # Operator Surround
 repo = 'kana/vim-operator-user'
@@ -207,8 +207,9 @@ repo = 'kana/vim-operator-user'
 repo = 'rhysd/vim-operator-surround'
 depends = 'kana/vim-operator-user'
 
-[[plugins]] # Over
-repo = 'osyo-manga/vim-over'
+# Substitute preview
+# [[plugins]] # Over
+# repo = 'osyo-manga/vim-over'
 
 [[plugins]] # Asterisk
 repo = 'haya14busa/vim-asterisk'
@@ -216,24 +217,26 @@ hook_add = '''
   let g:asterisk#keeppos = 1
 '''
 
-[[plugins]] # Github Markdown Css 
-repo = 'tigmium/github-markdown-css'
-rtp = ''
+# [[plugins]] # Github Markdown Css 
+# repo = 'tigmium/github-markdown-css'
+# rtp = ''
 
 [[plugins]] # Indent Line 
 repo = 'Yggdroot/indentLine'
 
-[[plugins]] # Memo List 
-repo = 'glidenote/memolist.vim'
+# メモ取る奴
+# [[plugins]] # Memo List 
+# repo = 'glidenote/memolist.vim'
 
 [[plugins]] # Git Gutter 
 repo = 'airblade/vim-gitgutter'
 
-[[plugins]] # Signature 
-repo = 'kshenoy/vim-signature'
+# toggle and display marks
+# [[plugins]] # Signature 
+# repo = 'kshenoy/vim-signature'
 
-[[plugins]] # Unite Mark
-repo = 'tacroe/unite-mark'
+# [[plugins]] # Unite Mark
+# repo = 'tacroe/unite-mark'
 
 [[plugins]] # Anzu 
 repo = 'osyo-manga/vim-anzu'
@@ -241,20 +244,18 @@ hook_add = '''
   let g:anzu_status_format = '(%i/%l)'
 '''
 
-[[plugins]] # Codic 
-repo = 'koron/codic-vim'
+# 翻訳
+# [[plugins]] # Codic 
+# repo = 'koron/codic-vim'
 
 [[plugins]] # Colorizer 
 repo = 'lilydjwg/colorizer'
 
-[[plugins]] # Rust 
-repo = 'rust-lang/rust.vim'
-
 [[plugins]] # Operator Replace 
 repo = 'kana/vim-operator-replace'
 
-[[plugins]] # Dockerfile 
-repo = 'ekalinin/Dockerfile.vim'
+# [[plugins]] # Dockerfile 
+# repo = 'ekalinin/Dockerfile.vim'
 
 [[plugins]] # ctrlp
 repo = 'ctrlpvim/ctrlp.vim'

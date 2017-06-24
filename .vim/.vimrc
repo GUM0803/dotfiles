@@ -240,9 +240,9 @@ endif
 " Key Binds"{{{
 let mapleader = ' '
 
-noremap <C-x><C-x> :tabnew $HOME/.vimrc<CR>
-
 nnoremap <esc> :noh<cr>
+
+nnoremap <Leader>v :tabnew ~/.vimrc<cr>
 
 imap <S-Enter> <ESC>
 
@@ -265,15 +265,19 @@ nnoremap <silent> gk <C-w>W
 nnoremap <C-J> <C-w>w
 nnoremap <C-K> <C-w>W
 
+nnoremap <silent> <C-j> }
+nnoremap <silent> <C-k> {
+
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
-nnoremap <silent> [unite]m :Unite mark<cr>
-nnoremap <silent> [unite]y :Unite history/yank<cr>
-nnoremap <silent> [unite]B :Unite bookmark<cr>
+" nnoremap <silent> [unite]m :Unite mark<cr>
+" nnoremap <silent> [unite]y :Unite history/yank<cr>
+" nnoremap <silent> [unite]B :Unite bookmark<cr>
 nnoremap <silent> [unite]q :Unite -tab -max-multi-lines=1 quickfix<cr>
 nnoremap <silent> [unite]g :Unite grep/git -no-quit -tab -buffer-name=grep-git -default-action=tabopen<cr>
 nnoremap <silent> <C-f> :Unite -start-insert outline<cr>
-nnoremap <silent> <C-_> :Unite buffer -start-insert<cr>
+
+nnoremap <silent> <C-@> :CtrlPBuffer<cr>
 
 nmap <Leader>r <Plug>(quickrun)
 
@@ -289,13 +293,13 @@ vmap <Leader>c <Plug>(caw:i:toggle)
 
 vmap <cr> <Plug>(EasyAlign)
 
-nmap <Leader>m <Plug>(quickhl-manual-this)
-xmap <Leader>m <Plug>(quickhl-manual-this)
-nmap <Leader>M <Plug>(quickhl-manual-reset)
-xmap <Leader>M <Plug>(quickhl-manual-reset)
-
-nmap <Leader>h <Plug>(quickhl-cword-toggle)
-nmap <Leader>] <Plug>(quickhl-tag-toggle)
+" nmap <Leader>m <Plug>(quickhl-manual-this)
+" xmap <Leader>m <Plug>(quickhl-manual-this)
+" nmap <Leader>M <Plug>(quickhl-manual-reset)
+" xmap <Leader>M <Plug>(quickhl-manual-reset)
+"
+" nmap <Leader>h <Plug>(quickhl-cword-toggle)
+" nmap <Leader>] <Plug>(quickhl-tag-toggle)
 
 nmap ys <Plug>(operator-surround-append)
 nmap ds <Plug>(operator-surround-delete)
@@ -336,20 +340,20 @@ endif
 " clear status
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 
-if executable('fcitx-remote')
-  inoremap <esc> <esc>:CloseFcitx<cr>
-  command! CloseFcitx :call system("fcitx-remote -c")
-endif
+" if executable('fcitx-remote')
+"   inoremap <esc> <esc>:CloseFcitx<cr>
+"   command! CloseFcitx :call system("fcitx-remote -c")
+" endif
 
 nmap <Leader>p <Plug>(operator-replace)
 "}}}
 
 " Options"{{{
-if has('vim_starting') 
-  if executable('xset')
-    call system('xset r rate 200 30')
-  endif
-endif
+" if has('vim_starting') 
+"   if executable('xset')
+"     call system('xset r rate 200 30')
+"   endif
+" endif
 
 " Google 翻訳
 if s:depend_cui_tool('trans', 'https://github.com/soimort/translate-shell')
@@ -362,6 +366,8 @@ if s:is_win
 endif
 set ambiwidth=double
 " set antialias
+
+colorscheme darkblue
 
 " ファイル形式に応じて色づけ
 syntax enable
