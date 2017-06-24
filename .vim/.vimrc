@@ -268,6 +268,8 @@ nnoremap <C-K> <C-w>W
 nnoremap <silent> <C-j> }
 nnoremap <silent> <C-k> {
 
+nnoremap <silent> , :VimShellBufferDir<cr>
+
 nnoremap [unite] <Nop>
 nmap     <Leader>u [unite]
 " nnoremap <silent> [unite]m :Unite mark<cr>
