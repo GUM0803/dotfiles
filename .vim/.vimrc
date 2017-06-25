@@ -426,7 +426,7 @@ set nocursorline
 set nocursorcolumn
 
 " 行を常に中央に
-set scrolloff=999
+" set scrolloff=999
 
 " 折り返しを禁止
 set nowrap
