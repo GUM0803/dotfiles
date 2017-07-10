@@ -260,7 +260,6 @@ repo = 'kana/vim-operator-replace'
 [[plugins]] # ctrlp
 repo = 'ctrlpvim/ctrlp.vim'
 hook_add = '''
-  let g:ctrlp_custom_ignore = '\v[\/](node_modules|vender|build|dist|public)$'
   let g:ctrlp_open_new_file = 't'
 '''
 
